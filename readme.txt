@@ -60,7 +60,7 @@ QuickShare does **not** work in WordPress versions below 3.5 (it will probably t
 
 == Screenshots ==
 1. Admin settings screen with live preview of output (with MP6).
-1. Default plugin display with the Twenty Thirteen theme.
+2. Default plugin display with the Twenty Thirteen theme.
 
 == Changelog ==
 = 1.0 =
