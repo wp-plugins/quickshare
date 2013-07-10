@@ -1,9 +1,9 @@
 === QuickShare ===
 Contributors: celloexpressions
-Tags: Social, Share, Sharing, Social Sharing, Social Media, Quick, Lightweight, No JS, Flexible, Customizable, Facebook, Twitter, Pinterest, Linkedin, Google+, Tumblr, Email, Reddit, StumbleUpon
+Tags: Social, Share, Sharing, Social Sharing, Social Media, Quick, Easy, Lightweight, No JS, Flexible, Customizable, Responsive, Facebook, Twitter, Pinterest, Linkedin, Google+, Tumblr, Email, Reddit, StumbleUpon
 Requires at least: 3.5
 Tested up to: 3.6
-Stable tag: 1.0
+Stable tag: 1.1
 Description: Add quick social sharing functions to your content. Challenge social sharing norms with a flexible design and fast performance.
 License: GPLv2
 
@@ -42,6 +42,8 @@ QuickShare can only display after posts use `the_content()`. One example of wher
 
 For additional customization, you can use `<?php do_quickshare_output( $url, $title, $source, $description, $imgurl ); ?>`, where `$url` is the link to the content to share, `$title` is the title, `$source` is the name of your website/blog, `$description` is a short description, and `$imgurl` is the thumbnail image url. This version of the custom QuickShare output can be used anywhere in your templates, inside or outside of the loop, opening the door to many customization options. If any of the parameters are null, QuickShare will attempt to populate them with the default values (using the `$post` global).
 
+An example of a website using QuickShare in a custom context is <a href="http://euclidsmuse.com/app?id=269">Euclid's Muse, on app display pages</a>.
+
 = Browser Support =
 QuickShare is designed for modern browsers. I do not (and will not make much effort to) support IE8 or below, and do not support features that aren't achievable with minimal CSS in other outdated browsers (including, now, IE9). That being said, if you find a compatibility issue *with an easy fix*, let me know on the support forums and I'll consider including it. In the meantime, you can always add any desired CSS to the custom CSS field without worrying about losing plugin edits to updates. For the most part, everything should fail gracefully; older browsers won't see special effects like rounded corners, transitions/animations, box shadows, and opacity filters, but will be functionally fine. Genericons do not work in several browsers (including IE7/8 and IE9 mobile, but not IE9 desktop), so don't use that display option if you need lots of browser support.
 
@@ -63,10 +65,19 @@ QuickShare does **not** work in WordPress versions below 3.5 (it will probably t
 2. Default plugin display with the Twenty Thirteen theme.
 
 == Changelog ==
+= 1.1 =
+* Added the ability to shrink and/or hide QuickShare in smaller viewports/devices (defaults to off), on order to optimize display with responsive themes.
+* Remove a stray javascript alert() from the admin page (which was leftover from debugging and occasionally created a popup window with the text "undefined" every time you changed an option...)
+* Fix the spelling of "Pinterest" (was "Pintrest" everywhere)
+* Note that Google+ also uses Open Graph data, like Facebook, so this option is **highly** recommended. It could help out with SEO too.
+
 = 1.0 =
 * First publically available version of the plugin.
 * Compatible with WordPress 3.5-3.6
 
 == Upgrade Notice ==
+= 1.1 =
+* A couple of trivial but significant bugfixes, add a UI for basic responsiveness
+
 = 1.0 =
 * Initial public release
