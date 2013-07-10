@@ -491,10 +491,10 @@ function cxnh_quickshare_head() {
 // add_quickshare_optput is the filter that appends quickshare to the_content
 function cxnh_add_quickshare_output( $content ) {
 	$options = get_option('cxnh_quickshare_options');
-	if( !cxnh_quickshare_getOption('everywhere',$options) && 
+	if( is_feed() || (!cxnh_quickshare_getOption('everywhere',$options) && 
 	  ( ( !cxnh_quickshare_getOption('posts',$options) && get_post_type() == 'post')
 	  || ( !cxnh_quickshare_getOption('pages',$options) && get_post_type() == 'page')
-	  || ( !cxnh_quickshare_getOption('attachments',$options) && get_post_type() == 'attachment') ) )
+	  || ( !cxnh_quickshare_getOption('attachments',$options) && get_post_type() == 'attachment') ) ) )
 		return $content;
 	else {
 		$sharecode = cxnh_quickshare_makeOutput();
