@@ -177,7 +177,6 @@ function checkInputs(st,ht){
 		else {
 			jQuery('#maincolor').show(st);
 			jQuery('#hover-color').show(st);
-			alert();
 			if(jQuery('#text_icons').is(':checked'))
 				jQuery('#text_icons_color').show(st);
 		}

@@ -224,14 +224,14 @@ Contents:
 .monochrome-color li.quickshare-linkedin:hover:before {
 	color: #0080b1;
 }
-.quickshare-pintrest {
-	background-image: url('icons/pintrest.png');
+.quickshare-pinterest {
+	background-image: url('icons/pinterest.png');
 }
-.quickshare-pintrest:before {
+.quickshare-pinterest:before {
 	content: '\f210';
 	color: #c92a2a;
 }
-.monochrome-color li.quickshare-pintrest:hover:before {
+.monochrome-color li.quickshare-pinterest:hover:before {
 	color: #c92a2a;
 }
 .quickshare-googleplus {

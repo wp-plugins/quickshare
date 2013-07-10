@@ -6,7 +6,7 @@
  * Version: 1.0
  * Author: Nick Halsey
  * Author URI: http://celloexpressions.com/
- * Tags: Social, Share, Sharing, Social Sharing, Social Media, Quick, Lightweight, No JS, Flexible, Customizable, Facebook, Twitter, Pintrest, Linkedin, Google+, Tumblr, Email, Reddit, StumbleUpon
+ * Tags: Social, Share, Sharing, Social Sharing, Social Media, Quick, Lightweight, No JS, Flexible, Customizable, Facebook, Twitter, Pinterest, Linkedin, Google+, Tumblr, Email, Reddit, StumbleUpon
  * License: GPL
 
 =====================================================================================
@@ -74,7 +74,7 @@ function cxnh_quickshare_add_defaults() {
 			
 			'facebook' => 1,
 			'twitter' => 1,
-			'pintrest' => 1,
+			'pinterest' => 1,
 			'linkedin' => 1,
 			'googleplus' => 1,
 			'reddit' => 0,
@@ -230,7 +230,7 @@ function cxnh_quickshare_render_form(){
 			<td style="column-count: 2; -webkit-column-count: 2; -moz-column-count: 2;">
 				<label><input name="cxnh_quickshare_options[facebook]" type="checkbox" value="1" <?php if (isset($options['facebook'])) { checked('1', $options['facebook']); } ?> /> Facebook</label><br/>
 				<label><input name="cxnh_quickshare_options[twitter]" type="checkbox" value="1" <?php if (isset($options['twitter'])) { checked('1', $options['twitter']); } ?> /> Twitter</label><br/>
-				<label><input name="cxnh_quickshare_options[pintrest]" type="checkbox" value="1" <?php if (isset($options['pintrest'])) { checked('1', $options['pintrest']); } ?> /> Pintrest</label><br/>
+				<label><input name="cxnh_quickshare_options[pinterest]" type="checkbox" value="1" <?php if (isset($options['pinterest'])) { checked('1', $options['pinterest']); } ?> /> Pinterest</label><br/>
 				<label><input name="cxnh_quickshare_options[linkedin]" type="checkbox" value="1" <?php if (isset($options['linkedin'])) { checked('1', $options['linkedin']); } ?> /> Linkedin</label><br/>
 				<label><input name="cxnh_quickshare_options[googleplus]" type="checkbox" value="1" <?php if (isset($options['googleplus'])) { checked('1', $options['googleplus']); } ?> /> Google+</label><br/>
 				<label><input name="cxnh_quickshare_options[tumblr]" type="checkbox" value="1" <?php if (isset($options['tumblr'])) { checked('1', $options['tumblr']); } ?> /> Tumblr</label><br/>
@@ -252,7 +252,7 @@ function cxnh_quickshare_render_form(){
 				<input type="text" id="upload-image-field" name="cxnh_quickshare_options[image]" value="<?php echo $options['image']; ?>" />
 				<input class="img_upload_button button" type="button" value="Upload/Select Image" />
 				<br/><br/>
-				<label><input name="cxnh_quickshare_options[hidepintrest]" type="checkbox" value="1" <?php if (isset($options['hidepintrest'])) { checked('1', $options['hidepintrest']); } ?> /> Hide Pintrest Sharing if no image is found</label>
+				<label><input name="cxnh_quickshare_options[hidepintrest]" type="checkbox" value="1" <?php if (isset($options['hidepintrest'])) { checked('1', $options['hidepintrest']); } ?> /> Hide Pinterest Sharing if no image is found</label>
 			</td>
 		</tr>
 	</table>
@@ -341,7 +341,7 @@ function cxnh_quickshare_render_form(){
 			<li class="quickshare-share"><?php echo cxnh_quickshare_getOption('sharelabel',$options); ?></li> 
 			<?php if(cxnh_quickshare_getOption('facebook',$options)){ ?><a href="javascript:void(0)" title="Share on Facebook"><li class="quickshare-facebook">Facebook</li></a><?php } ?>
 			<?php if(cxnh_quickshare_getOption('twitter',$options)){ ?><a href="javascript:void(0)" title="Share on Twitter"><li class="quickshare-twitter">Twitter</li></a><?php } ?>
-			<?php if(cxnh_quickshare_getOption('pintrest',$options)){ ?><a href="javascript:void(0)" title="Share on Pintrest"><li class="quickshare-pintrest">Pintrest</li></a><?php } ?>
+			<?php if(cxnh_quickshare_getOption('pinterest',$options)){ ?><a href="javascript:void(0)" title="Share on Pinterest"><li class="quickshare-pinterest">Pinterest</li></a><?php } ?>
 			<?php if(cxnh_quickshare_getOption('linkedin',$options)){ ?><a href="javascript:void(0)" title="Share on Linkedin"><li class="quickshare-linkedin">Linkedin</li></a><?php } ?>
 			<?php if(cxnh_quickshare_getOption('googleplus',$options)){ ?><a href="javascript:void(0)" title="Share on Google+"><li class="quickshare-googleplus">Google+</li></a><?php } ?>
 			<?php if(cxnh_quickshare_getOption('tumblr',$options)){ ?><a href="javascript:void(0)" title="Share on Tumblr" ><li class="quickshare-tumblr">Tumblr</li></a><?php } ?>
@@ -490,7 +490,7 @@ function cxnh_quickshare_makeOutput( $url=null, $title=null, $source=null, $desc
 		<li class="quickshare-share"><?php echo cxnh_quickshare_getOption('sharelabel',$options); ?></li> 
 		<?php if(cxnh_quickshare_getOption('facebook',$options)){ ?><a href="https://facebook.com/sharer.php?u=<?php echo $url; ?>&amp;t=<?php echo $title.'+<+'.$source; ?>" target="_blank" title="Share on Facebook"><li class="quickshare-facebook">Facebook</li></a><?php } ?>
 		<?php if(cxnh_quickshare_getOption('twitter',$options)){ ?><a href="https://twitter.com/share?url=<?php echo $url; ?>" target="_blank" title="Share on Twitter"><li class="quickshare-twitter">Twitter</li></a><?php } ?>
-		<?php if(cxnh_quickshare_getOption('pintrest',$options) && ($imgurl != urlencode(cxnh_quickshare_getOption('image',$options)) || !cxnh_quickshare_getOption('hidepintrest',$options))){ ?><a href="http://pinterest.com/pin/create/button/?url=<?php echo $url; ?>&amp;media=<?php echo $imgurl; ?>&amp;description=<?php echo $description; ?>" target="_blank" title="Share on Pintrest"><li class="quickshare-pintrest">Pintrest</li></a><?php } ?>
+		<?php if(cxnh_quickshare_getOption('pinterest',$options) && ($imgurl != urlencode(cxnh_quickshare_getOption('image',$options)) || !cxnh_quickshare_getOption('hidepintrest',$options))){ ?><a href="http://pinterest.com/pin/create/button/?url=<?php echo $url; ?>&amp;media=<?php echo $imgurl; ?>&amp;description=<?php echo $description; ?>" target="_blank" title="Share on Pinterest"><li class="quickshare-pinterest">Pinterest</li></a><?php } ?>
 		<?php if(cxnh_quickshare_getOption('linkedin',$options)){ ?><a href="http://linkedin.com/shareArticle?mini=true&amp;url=<?php echo $url; ?>&amp;title=<?php echo $title; ?>&amp;source=<?php echo $source; ?>&amp;summary=<?php echo $description; ?>" title="Share on Linkedin" target="_blank"><li class="quickshare-linkedin">Linkedin</li></a><?php } ?>
 		<?php if(cxnh_quickshare_getOption('googleplus',$options)){ ?><a href="https://plus.google.com/share?url=<?php echo $url; ?>" target="_blank" title="Share on Google+"><li class="quickshare-googleplus">Google+</li></a><?php } ?>
 		<?php if(cxnh_quickshare_getOption('tumblr',$options)){ ?><a href="http://tumblr.com/share/link?url=<?php echo $url; ?>&amp;name=<?php echo $title.'+<+'.$source; ?>&amp;description=<?php echo $description; ?>" title="Share on Tumblr" target="_blank"><li class="quickshare-tumblr">Tumblr</li></a><?php } ?>

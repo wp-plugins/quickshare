@@ -1,6 +1,6 @@
 === QuickShare ===
 Contributors: celloexpressions
-Tags: Social, Share, Sharing, Social Sharing, Social Media, Quick, Lightweight, No JS, Flexible, Customizable, Facebook, Twitter, Pintrest, Linkedin, Google+, Tumblr, Email, Reddit, StumbleUpon
+Tags: Social, Share, Sharing, Social Sharing, Social Media, Quick, Lightweight, No JS, Flexible, Customizable, Facebook, Twitter, Pinterest, Linkedin, Google+, Tumblr, Email, Reddit, StumbleUpon
 Requires at least: 3.5
 Tested up to: 3.6
 Stable tag: 1.0
@@ -12,7 +12,7 @@ This plugin, like many others, adds content-sharing functions after your posts (
 
 QuickShare is quick because it doesn't run 3rd-party sharing JavaScript; in fact, there is **no** front-end JS. The sharing functions are built into links that take the user (in new tabs) to the native sharing interface on each social media site.
 
-You can choose which social media sites to include from: Facebook, Twitter, Pintrest, Linkedin, Google+, Tumblr, Reddit, and StumbleUpon. A basic email function is also available.
+You can choose which social media sites to include from: Facebook, Twitter, Pinterest, Linkedin, Google+, Tumblr, Reddit, and StumbleUpon. A basic email function is also available.
 
 The share bar appearance is highly customizable and share functions can be displayed as either icons, Genericons or text. Each display method features different customization options; customize through the settings page or with custom CSS.
 
@@ -28,8 +28,8 @@ As a bonus, QuickShare includes several built-in CSS3 effects for hover state an
 1. Make sure that your theme has the `wp_head()` action hook and uses `the_content()`; this is where QuickShare hooks into. Alternately, add `<?php do_quickshare_output(); ?>` to your template files.
 
 == Frequently Asked Questions ==
-= Optimizing Pintrest Sharing (and images) =
-Pintrest is image-centric, so any content to be shared via Pintrest should include an image. QuickShare attempts to find an image in each post by first looking for a featured image, then grabbing the first attached image, looking for a raw image tag, or finally falling beck to a site-wide default image that you can set. You can also hide Pintrest sharing if no post image is found. The post image will also be used for Facebook sharing, by default.
+= Optimizing Pinterest Sharing (and images) =
+Pinterest is image-centric, so any content to be shared via Pinterest should include an image. QuickShare attempts to find an image in each post by first looking for a featured image, then grabbing the first attached image, looking for a raw image tag, or finally falling beck to a site-wide default image that you can set. You can also hide Pinterest sharing if no post image is found. The post image will also be used for Facebook sharing, by default.
 
 = Customizing the Social Share Images =
 QuickShare provides many options for design customization, but if you want to go as far as changing the share images (if Genericons aren't working for you either), you can! Just throw in some custom CSS, based on the code in `quickshare.css`. You could even use your own icon font in place of Genericons!
