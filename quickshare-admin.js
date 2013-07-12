@@ -54,6 +54,7 @@ jQuery(document).ready(function(){
 function toType( type ){
 	jQuery('#settingsform').removeClass('icons genericons text');
 	jQuery('#settingsform').addClass(type);
+	checkInputs(0,0);
 }
 function updatebr(){
 	var br = jQuery('#brinput').val();
@@ -128,6 +129,10 @@ function switchTabs( tabto ){
 }
 function checkInputs(st,ht){
 	//check showing/hiding of each input
+	if(jQuery('input:radio[name="cxnh_quickshare_options[size]"]:checked').val() == 'small')
+		jQuery('#responsive-small').hide(ht);
+	else
+		jQuery('#responsive-small').show(st);
 	
 	//Icons
 	if(jQuery('input:radio[name="cxnh_quickshare_options[displaytype]"]:checked').val() == 'icons') {
@@ -159,7 +164,8 @@ function checkInputs(st,ht){
 			jQuery('#hover-color').hide(ht);
 		}
 	}
-	//text:
+	
+	//Text
 	else if(jQuery('input:radio[name="cxnh_quickshare_options[displaytype]"]:checked').val() == 'text') {
 		jQuery('#main-color').show(st); // always displayed for text
 		jQuery('#hovercolorwrap').show(st); // only tr is changed for text
