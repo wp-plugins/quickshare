@@ -258,9 +258,9 @@ function cxnh_quickshare_render_form(){
 			</td>
 		</tr>
 		<tr>
-			<th scope="row">Social Graph Meta<br><strong>Strongly Recommended</strong></th>
+			<th scope="row">Social Graph Meta<br><em>Strongly Recommended</em></th>
 			<td>
-				<label><input name="cxnh_quickshare_options[ogmeta]" type="checkbox" value="1" <?php if (isset($options['ogmeta'])) { checked('1', $options['ogmeta']); } ?> /> Add Open Graph Meta Tags (in the html <code>&lt;head&gt;</code>) to single posts and pages using QuickShare (optimizes Facebook and Googl+ sharing). The following properties are specified: <code>og:title, og:url, og:description, og:image, og:site_name</code>.</label>
+				<label><input name="cxnh_quickshare_options[ogmeta]" type="checkbox" value="1" <?php if (isset($options['ogmeta'])) { checked('1', $options['ogmeta']); } ?> /> Add Open Graph Meta Tags (in the html <code>&lt;head&gt;</code>) to single posts and pages using QuickShare (optimizes Facebook and Google+ sharing). The following properties are specified: <code>og:title, og:url, og:description, og:image, og:site_name</code>.</label>
 				<p style="font-style: italic;">You should only disable this option if you know that this information is provided by your theme or another plugin.</p>
 			</td>
 		</tr>
@@ -335,7 +335,7 @@ function cxnh_quickshare_render_form(){
 		<tr class="advanced">
 			<th scope="row">Responsive Design</th>
 			<td>
-				<p>Switch to small size on devices/viewports rendering at <input type="number" size="3" style="max-width: 50px;" name="cxnh_quickshare_options[respond_small]" value="<?php echo $options['respond_small']; ?>" />px or less.</p>
+				<p id="responsive-small">Switch to small size on devices/viewports rendering at <input type="number" size="3" style="max-width: 50px;" name="cxnh_quickshare_options[respond_small]" value="<?php echo $options['respond_small']; ?>" />px or less.</p>
 				<p>Hide QuickShare entirely on devices/viewports rendering at <input type="number" size="3" style="max-width: 50px;" name="cxnh_quickshare_options[respond_hide]" value="<?php echo $options['respond_hide']; ?>" />px or less.</p>
 			</td>
 		</tr>
