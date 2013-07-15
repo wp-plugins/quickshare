@@ -3,7 +3,7 @@
  * Plugin Name: QuickShare
  * Plugin URI: http://wordpress.org/plugins/quickshare/
  * Description: Add quick social sharing functions to your content. Challenge social sharing norms with a flexible design and fast performance.
- * Version: 1.1
+ * Version: 1.2
  * Author: Nick Halsey
  * Author URI: http://celloexpressions.com/
  * Tags: Social, Share, Sharing, Social Sharing, Social Media, Quick, Easy, Lightweight, No JS, Flexible, Customizable, Responsive, Facebook, Twitter, Pinterest, Linkedin, Google+, Tumblr, Email, Reddit, StumbleUpon
@@ -58,7 +58,7 @@ function cxnh_quickshare_add_defaults() {
 		delete_option('cxnh_quickshare_options'); 
 		$arr = array(
 			//general
-			'plugin_version' => '1.1',
+			'plugin_version' => '1.2', // currently tracks initially installed plugin version
 			'settingspage' => 'design',
 			'displaytype' => 'icons',
 			'size' => '',
@@ -175,27 +175,27 @@ function cxnh_quickshare_admin_head(){
 		if($options['settingspage'] == 'config'){ echo '#quickshare_design { display: none; }'; }  ?>
 	</style>
 	<style type="text/css" id="dynamic-custom-options-css">
-		.quickshare-text li,
-		<?php if(cxnh_quickshare_getOption('text_icons_color',$options)){ echo '.quickshare-text li:before,'; } ?>
-		.quickshare-text li:hover,
-		.quickshare-genericons.monochrome li:before,
-		.quickshare-genericons.monochrome-color li:before {
+		.quickshare-text span,
+		<?php if(cxnh_quickshare_getOption('text_icons_color',$options)){ echo '.quickshare-text span:before,'; } ?>
+		.quickshare-text span:hover,
+		.quickshare-genericons.monochrome span:before,
+		.quickshare-genericons.monochrome-color span:before {
 			<?php if(!cxnh_quickshare_getOption('inherit_color',$options))
 				echo 'color: '.cxnh_quickshare_getOption('color',$options).';';
 			if(!cxnh_quickshare_getOption('bgtransparent',$options)&&cxnh_quickshare_getOption('displaytype',$options)=='text')
 				echo 'background-color: '.cxnh_quickshare_getOption('bgcolor',$options).';';
 			?>
 		}
-		.quickshare-text li:hover,
-		<?php if(cxnh_quickshare_getOption('text_icons_color',$options)){ echo '.quickshare-text li:hover:before,'; } ?>
-		.quickshare-genericons.monochrome li:hover:before {
+		.quickshare-text span:hover,
+		<?php if(cxnh_quickshare_getOption('text_icons_color',$options)){ echo '.quickshare-text span:hover:before,'; } ?>
+		.quickshare-genericons.monochrome span:hover:before {
 			<?php if(!cxnh_quickshare_getOption('inherit_color',$options))
 				echo 'color: ' . cxnh_quickshare_getOption('hovercolor',$options) .';';
 			?>
 		}
-		.quickshare-icons li,
-		.quickshare-genericons li:before,
-		.quickshare-text li {
+		.quickshare-icons span,
+		.quickshare-genericons span:before,
+		.quickshare-text span {
 			border-radius: <?php echo cxnh_quickshare_getOption('borderradius',$options); ?>px;
 		}
 		<?php echo cxnh_quickshare_getOption('customcss',$options); ?>
@@ -333,10 +333,11 @@ function cxnh_quickshare_render_form(){
 			</td>
 		</tr>
 		<tr class="advanced">
-			<th scope="row">Responsive Design</th>
+			<th scope="row">Responsive Design [<a href="javascript:void(0)" id="responsive-help">?</a>]</th>
 			<td>
 				<p id="responsive-small">Switch to small size on devices/viewports rendering at <input type="number" size="3" style="max-width: 50px;" name="cxnh_quickshare_options[respond_small]" value="<?php echo $options['respond_small']; ?>" />px or less.</p>
 				<p>Hide QuickShare entirely on devices/viewports rendering at <input type="number" size="3" style="max-width: 50px;" name="cxnh_quickshare_options[respond_hide]" value="<?php echo $options['respond_hide']; ?>" />px or less.</p>
+				<p style="font-style: italic; display: none;" id="responsive-description">Use these options if QuickShare takes up too much space on mobile devices like smartphones and tablets. A value of "600" will generally apply to smartphones but not tablets. A good way to test these values is to view your site on a PC and resize the browser window so that it's only as wide as a tablet or phone.</p>
 			</td>
 		</tr>
 		<tr class="advanced">
@@ -355,15 +356,15 @@ function cxnh_quickshare_render_form(){
 		<div class="quickshare-container">
 		<ul class="<?php echo cxnh_quickshare_get_ulclass(); ?>" id="quickshare-design-preview">
 			<li class="quickshare-share"><?php echo cxnh_quickshare_getOption('sharelabel',$options); ?></li> 
-			<?php if(cxnh_quickshare_getOption('facebook',$options)){ ?><a href="javascript:void(0)" title="Share on Facebook"><li class="quickshare-facebook">Facebook</li></a><?php } ?>
-			<?php if(cxnh_quickshare_getOption('twitter',$options)){ ?><a href="javascript:void(0)" title="Share on Twitter"><li class="quickshare-twitter">Twitter</li></a><?php } ?>
-			<?php if(cxnh_quickshare_getOption('pintrest',$options)){ ?><a href="javascript:void(0)" title="Share on Pinterest"><li class="quickshare-pinterest">Pinterest</li></a><?php } ?>
-			<?php if(cxnh_quickshare_getOption('linkedin',$options)){ ?><a href="javascript:void(0)" title="Share on Linkedin"><li class="quickshare-linkedin">Linkedin</li></a><?php } ?>
-			<?php if(cxnh_quickshare_getOption('googleplus',$options)){ ?><a href="javascript:void(0)" title="Share on Google+"><li class="quickshare-googleplus">Google+</li></a><?php } ?>
-			<?php if(cxnh_quickshare_getOption('tumblr',$options)){ ?><a href="javascript:void(0)" title="Share on Tumblr" ><li class="quickshare-tumblr">Tumblr</li></a><?php } ?>
-			<?php if(cxnh_quickshare_getOption('reddit',$options)){ ?><a href="javascript:void(0)" title="Submit to Reddit"><li class="quickshare-reddit">Reddit</li></a><?php } ?>
-			<?php if(cxnh_quickshare_getOption('stumbleupon',$options)){ ?><a href="javascript:void(0)" title="Share on StumbleUpon"><li class="quickshare-stumbleupon">Stumble Upon</li></a><?php } ?>
-			<?php if(cxnh_quickshare_getOption('email',$options)){ ?><a href="javascript:void(0)" title="Share via Email"><li class="quickshare-email">Email</li></a><?php } ?>
+			<?php if(cxnh_quickshare_getOption('facebook',$options)){ ?><li><a href="javascript:void(0)" title="Share on Facebook"><span class="quickshare-facebook">Facebook</span></a></li><?php } ?>
+			<?php if(cxnh_quickshare_getOption('twitter',$options)){ ?><li><a href="javascript:void(0)" title="Share on Twitter"><span class="quickshare-twitter">Twitter</span></a></li><?php } ?>
+			<?php if(cxnh_quickshare_getOption('pintrest',$options)){ ?><li><a href="javascript:void(0)" title="Share on Pinterest"><span class="quickshare-pinterest">Pinterest</span></a></li><?php } ?>
+			<?php if(cxnh_quickshare_getOption('linkedin',$options)){ ?><li><a href="javascript:void(0)" title="Share on Linkedin"><span class="quickshare-linkedin">Linkedin</span></a></li><?php } ?>
+			<?php if(cxnh_quickshare_getOption('googleplus',$options)){ ?><li><a href="javascript:void(0)" title="Share on Google+"><span class="quickshare-googleplus">Google+</span></a></li><?php } ?>
+			<?php if(cxnh_quickshare_getOption('tumblr',$options)){ ?><li><a href="javascript:void(0)" title="Share on Tumblr" ><span class="quickshare-tumblr">Tumblr</span></a></li><?php } ?>
+			<?php if(cxnh_quickshare_getOption('reddit',$options)){ ?><li><a href="javascript:void(0)" title="Submit to Reddit"><span class="quickshare-reddit">Reddit</span></a></li><?php } ?>
+			<?php if(cxnh_quickshare_getOption('stumbleupon',$options)){ ?><li><a href="javascript:void(0)" title="Share on StumbleUpon"><span class="quickshare-stumbleupon">Stumble Upon</span></a></li><?php } ?>
+			<?php if(cxnh_quickshare_getOption('email',$options)){ ?><li><a href="javascript:void(0)" title="Share via Email"><span class="quickshare-email">Email</span></a></li><?php } ?>
 		</ul>
 		</div>
 		</td></tr>
@@ -429,43 +430,43 @@ function cxnh_quickshare_head() {
 	//custom colors, etc. that aren't set with classes
 ?>
 	<style type="text/css">
-		.quickshare-text li,
-		<?php if(cxnh_quickshare_getOption('text_icons_color',$options)){ echo '.quickshare-text li:before,'; } ?>
-		.quickshare-text li:hover,
-		.quickshare-genericons.monochrome li:before,
-		.quickshare-genericons.monochrome-color li:before {
+		.quickshare-text span,
+		<?php if(cxnh_quickshare_getOption('text_icons_color',$options)){ echo '.quickshare-text span:before,'; } ?>
+		.quickshare-text span:hover,
+		.quickshare-genericons.monochrome span:before,
+		.quickshare-genericons.monochrome-color span:before {
 			<?php if(!cxnh_quickshare_getOption('inherit_color',$options))
 				echo 'color: '.cxnh_quickshare_getOption('color',$options).';';
 			if(!cxnh_quickshare_getOption('bgtransparent',$options)&&cxnh_quickshare_getOption('displaytype',$options)=='text')
 				echo 'background-color: '.cxnh_quickshare_getOption('bgcolor',$options).';';
 			?>
 		}
-		.quickshare-text li:hover,
-		<?php if(cxnh_quickshare_getOption('text_icons_color',$options)){ echo '.quickshare-text li:hover:before,'; } ?>
-		.quickshare-genericons.monochrome li:hover:before {
+		.quickshare-text span:hover,
+		<?php if(cxnh_quickshare_getOption('text_icons_color',$options)){ echo '.quickshare-text span:hover:before,'; } ?>
+		.quickshare-genericons.monochrome span:hover:before {
 			<?php if(!cxnh_quickshare_getOption('inherit_color',$options))
 				echo 'color: ' . cxnh_quickshare_getOption('hovercolor',$options) .';';
 			?>
 		}
-		.quickshare-icons li,
-		.quickshare-genericons li:before,
-		.quickshare-text li {
+		.quickshare-icons span,
+		.quickshare-genericons span:before,
+		.quickshare-text span {
 			border-radius: <?php echo cxnh_quickshare_getOption('borderradius',$options); ?>px;
 		}
 		
 		<?php if(cxnh_quickshare_getOption('respond_small')) { ?>
 			@media only screen and (max-width: <?php echo cxnh_quickshare_getOption('respond_small'); ?>px) {
 				/* Duplication of class-based small styling from quickshare.css */
-				.quickshare-icons li {
+				.quickshare-icons span {
 					width: 32px !important;
 					height: 32px !important;
 				}
-				.quickshare-genericons li {
+				.quickshare-genericons span {
 					width: 32px !important;
 					min-width: 32px !important;
 					height: 32px !important;
 				}
-				.quickshare-genericons li:before {
+				.quickshare-genericons span:before {
 					width: 32px !important;
 					height: 32px !important;
 					font-size: 32px !important;
@@ -473,7 +474,7 @@ function cxnh_quickshare_head() {
 				li.quickshare-share {
 					width: auto !important; /* need to add this again in the !important stack */
 				}
-				.quickshare-text li {
+				.quickshare-text span {
 					font-size: .7em !important;
 				}
 			}
@@ -533,15 +534,15 @@ function cxnh_quickshare_makeOutput( $url=null, $title=null, $source=null, $desc
 	<div class="quickshare-container">
 	<ul class="<?php echo cxnh_quickshare_get_ulclass(); ?>">
 		<li class="quickshare-share"><?php echo cxnh_quickshare_getOption('sharelabel',$options); ?></li> 
-		<?php if(cxnh_quickshare_getOption('facebook',$options)){ ?><a href="https://facebook.com/sharer.php?u=<?php echo $url; ?>&amp;t=<?php echo $title.'+<+'.$source; ?>" target="_blank" title="Share on Facebook"><li class="quickshare-facebook">Facebook</li></a><?php } ?>
-		<?php if(cxnh_quickshare_getOption('twitter',$options)){ ?><a href="https://twitter.com/share?url=<?php echo $url; ?>" target="_blank" title="Share on Twitter"><li class="quickshare-twitter">Twitter</li></a><?php } ?>
-		<?php if(cxnh_quickshare_getOption('pintrest',$options) && ($imgurl != urlencode(cxnh_quickshare_getOption('image',$options)) || !cxnh_quickshare_getOption('hidepintrest',$options))){ ?><a href="http://pinterest.com/pin/create/button/?url=<?php echo $url; ?>&amp;media=<?php echo $imgurl; ?>&amp;description=<?php echo $description; ?>" target="_blank" title="Share on Pinterest"><li class="quickshare-pinterest">Pinterest</li></a><?php } ?>
-		<?php if(cxnh_quickshare_getOption('linkedin',$options)){ ?><a href="http://linkedin.com/shareArticle?mini=true&amp;url=<?php echo $url; ?>&amp;title=<?php echo $title; ?>&amp;source=<?php echo $source; ?>&amp;summary=<?php echo $description; ?>" title="Share on Linkedin" target="_blank"><li class="quickshare-linkedin">Linkedin</li></a><?php } ?>
-		<?php if(cxnh_quickshare_getOption('googleplus',$options)){ ?><a href="https://plus.google.com/share?url=<?php echo $url; ?>" target="_blank" title="Share on Google+"><li class="quickshare-googleplus">Google+</li></a><?php } ?>
-		<?php if(cxnh_quickshare_getOption('tumblr',$options)){ ?><a href="http://tumblr.com/share/link?url=<?php echo $url; ?>&amp;name=<?php echo $title.'+<+'.$source; ?>&amp;description=<?php echo $description; ?>" title="Share on Tumblr" target="_blank"><li class="quickshare-tumblr">Tumblr</li></a><?php } ?>
-		<?php if(cxnh_quickshare_getOption('reddit',$options)){ ?><a href="http://reddit.com/submit?url=<?php echo $url; ?>&amp;title=<?php echo $title.'+<+'.$source; ?>" title="Submit to Reddit" target="_blank"><li class="quickshare-reddit">Reddit</li></a><?php } ?>
-		<?php if(cxnh_quickshare_getOption('stumbleupon',$options)){ ?><a href="http://stumbleupon.com/submit?url=<?php echo $url; ?>&amp;title=<?php echo $title.'+<+'.$source; ?>" target="_blank" title="Share on StumbleUpon"><li class="quickshare-stumbleupon">Stumble Upon</li></a><?php } ?>
-		<?php if(cxnh_quickshare_getOption('email',$options)){ ?><a href="mailto:?subject=<?php echo $source.':+'.$title; ?>&amp;body=<?php echo $url; ?>" target="_blank" title="Share via Email"><li class="quickshare-email">Email</li></a><?php } ?>
+		<?php if(cxnh_quickshare_getOption('facebook',$options)){ ?><li><a href="https://facebook.com/sharer.php?u=<?php echo $url; ?>&amp;t=<?php echo $title.'+<+'.$source; ?>" target="_blank" title="Share on Facebook"><span class="quickshare-facebook">Facebook</span></a></li><?php } ?>
+		<?php if(cxnh_quickshare_getOption('twitter',$options)){ ?><li><a href="https://twitter.com/share?url=<?php echo $url; ?>" target="_blank" title="Share on Twitter"><span class="quickshare-twitter">Twitter</span></a></li><?php } ?>
+		<?php if(cxnh_quickshare_getOption('pintrest',$options) && ($imgurl != urlencode(cxnh_quickshare_getOption('image',$options)) || !cxnh_quickshare_getOption('hidepintrest',$options))){ ?><li><a href="http://pinterest.com/pin/create/button/?url=<?php echo $url; ?>&amp;media=<?php echo $imgurl; ?>&amp;description=<?php echo $description; ?>" target="_blank" title="Share on Pinterest"><span class="quickshare-pinterest">Pinterest</span></a></li><?php } ?>
+		<?php if(cxnh_quickshare_getOption('linkedin',$options)){ ?><li><a href="http://linkedin.com/shareArticle?mini=true&amp;url=<?php echo $url; ?>&amp;title=<?php echo $title; ?>&amp;source=<?php echo $source; ?>&amp;summary=<?php echo $description; ?>" title="Share on Linkedin" target="_blank"><span class="quickshare-linkedin">Linkedin</span></a></li><?php } ?>
+		<?php if(cxnh_quickshare_getOption('googleplus',$options)){ ?><li><a href="https://plus.google.com/share?url=<?php echo $url; ?>" target="_blank" title="Share on Google+"><span class="quickshare-googleplus">Google+</span></a></li><?php } ?>
+		<?php if(cxnh_quickshare_getOption('tumblr',$options)){ ?><li><a href="http://tumblr.com/share/link?url=<?php echo $url; ?>&amp;name=<?php echo $title.'+<+'.$source; ?>&amp;description=<?php echo $description; ?>" title="Share on Tumblr" target="_blank"><span class="quickshare-tumblr">Tumblr</span></a></li><?php } ?>
+		<?php if(cxnh_quickshare_getOption('reddit',$options)){ ?><li><a href="http://reddit.com/submit?url=<?php echo $url; ?>&amp;title=<?php echo $title.'+<+'.$source; ?>" title="Submit to Reddit" target="_blank"><span class="quickshare-reddit">Reddit</span></a></li><?php } ?>
+		<?php if(cxnh_quickshare_getOption('stumbleupon',$options)){ ?><li><a href="http://stumbleupon.com/submit?url=<?php echo $url; ?>&amp;title=<?php echo $title.'+<+'.$source; ?>" target="_blank" title="Share on StumbleUpon"><span class="quickshare-stumbleupon">Stumble Upon</span></a></li><?php } ?>
+		<?php if(cxnh_quickshare_getOption('email',$options)){ ?><li><a href="mailto:?subject=<?php echo $source.':+'.$title; ?>&amp;body=<?php echo $url; ?>" target="_blank" title="Share via Email"><span class="quickshare-email">Email</span></a></li><?php } ?>
 	</ul>
 	</div>
 <?php

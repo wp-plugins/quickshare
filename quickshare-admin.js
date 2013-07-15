@@ -47,6 +47,9 @@ jQuery(document).ready(function(){
 	jQuery('#displayeverywhere').bind('change', function () {
 		jQuery('.display-option').toggle(200);
 	});
+	jQuery('#responsive-help').click(function() {
+		jQuery('#responsive-description').toggle(200);
+	});
 	
 	jQuery('#nav-design').click(function(){switchTabs('design')});
 	jQuery('#nav-config').click(function(){switchTabs('config')});
@@ -101,21 +104,21 @@ function getUlClass(){
 }
 function getDynamicCSS() {
 	var displaytype = jQuery('input:radio[name="cxnh_quickshare_options[displaytype]"]:checked').val();
-	var css = '.quickshare-text li, ';
+	var css = '.quickshare-text span, ';
 	if(jQuery('#text_icons_color input').is(':checked'))
-		css += '.quickshare-text li:before, ';
-	css += '.quickshare-text li:hover, .quickshare-genericons.monochrome li:before,.quickshare-genericons.monochrome-color li:before { ';
+		css += '.quickshare-text span:before, ';
+	css += '.quickshare-text span:hover, .quickshare-genericons.monochrome span:before,.quickshare-genericons.monochrome-color span:before { ';
 	if(!jQuery('#inherit_colors').is(':checked'))
 		css += 'color: '+jQuery('#maincolor input').val()+'; ';
 	if(!jQuery('#bgtrans').is(':checked')&&displaytype=='text')
 		css += 'background-color: '+jQuery('#bgcolor input').val()+'; ';
-	css += '} .quickshare-text li:hover, ';
+	css += '} .quickshare-text span:hover, ';
 	if(jQuery('#text_icons_color input').is(':checked'))
-		css += '.quickshare-text li:hover:before,';
-	css += '.quickshare-genericons.monochrome li:hover:before { ';
+		css += '.quickshare-text span:hover:before,';
+	css += '.quickshare-genericons.monochrome span:hover:before { ';
 	if(!jQuery('#inherit_colors').is(':checked'))
 		css += 'color: ' + jQuery('#hovercolor').val() +';';
-	css += '} .quickshare-icons li, .quickshare-genericons li:before, .quickshare-text li { ';
+	css += '} .quickshare-icons span, .quickshare-genericons span:before, .quickshare-text span { ';
 	css += 'border-radius: '+jQuery('#brinput').val()+'px; }';
 	css += jQuery('#customcss').val();
 	return css;
