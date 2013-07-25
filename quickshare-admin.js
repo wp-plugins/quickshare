@@ -7,7 +7,7 @@ jQuery(document).ready(function(){
 	// File uploader
 	var file_frame;
 	var formfield;
-	jQuery('.img_upload_button').live('click', function( event ){
+	jQuery('.img_upload_button').on('click', function( event ){
 		formfield = jQuery(this).prev().attr('id');
 	
 		event.preventDefault();
