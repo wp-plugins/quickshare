@@ -116,7 +116,7 @@ Contents:
 	float: left;
 	display: block;
 	width: auto;
-	padding: 0 5px;
+	padding: 5px 10px;
 	margin: 0;
 	vertical-align: middle;
 	border: 0;
@@ -128,6 +128,7 @@ Contents:
 	text-decoration: none;
 	transition: .2s all cubic-bezier(0.636,0.197,0.0202,0.352);
 	cursor: pointer;
+	position: relative;
 }
 .quickshare-text span:hover {
 	box-shadow: 1px 1px 1px rgba(0,0,0,.4);
@@ -139,6 +140,9 @@ Contents:
 .quickshare-text span:before {
 	font-size: 0;
 }
+.quickshare-text.qs-genericons span {
+	padding: 4px 8px 4px 28px;
+}
 .quickshare-text.qs-genericons span:before {
 	font-family: Genericons;
 	-webkit-font-smoothing: antialiased;
@@ -147,7 +151,11 @@ Contents:
 	font-weight: normal;
 	font-style: normal;
 	width: 16px;
-	margin-right: 3px;
+	height: 16px;
+	position: absolute;
+	left: 8px;
+	top: 50%;
+	margin-top: -12px;
 	transition: .2s all cubic-bezier(0.636,0.197,0.0202,0.352);
 }
 
