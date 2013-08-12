@@ -147,7 +147,7 @@ function cxnh_quickshare_admin_head(){
 	<style type="text/css">
 		.icons .text-option, .icons .genericons-option, .icons .n-icons-option { display: none; }
 		.genericons .text-option, .genericons .icons-option, .genericons .n-genericons-option { display: none; }
-		.text .icon-option, .text .genericons-option { display: none; }
+		.text .icon-option, .text .genericons-option, .text .n-text-option { display: none; }
 		label { clear: both; }
 		.hidden { display: none; }
 		.quickshare-container {
@@ -325,7 +325,7 @@ function cxnh_quickshare_render_form(){
 		<tr>
 			<th scope="row">Hover Effects</th>
 			<td>
-				<label><input name="cxnh_quickshare_options[effect-spin]" id="effect-spin" type="checkbox" value="1" <?php if (isset($options['effect-spin'])) { checked('1', $options['effect-spin']); } ?> /> Spin <span class="text-option">(discouraged with text display)</span></label><br/>
+				<label><input name="cxnh_quickshare_options[effect-spin]" id="effect-spin" type="checkbox" value="1" <?php if (isset($options['effect-spin'])) { checked('1', $options['effect-spin']); } ?> /> <span class="n-text-option">Spin</span><span class="text-option">Skew</span></label><br/>
 				<label><input name="cxnh_quickshare_options[effect-round]" id="effect-round" type="checkbox" value="1" <?php if (isset($options['effect-round'])) { checked('1', $options['effect-round']); } ?> /> Round</label><br/>
 				<label><input name="cxnh_quickshare_options[effect-glow]" id="effect-glow" type="checkbox" value="1" <?php if (isset($options['effect-glow'])) { checked('1', $options['effect-glow']); } ?> /> Glow</label><br/>
 				<label><input name="cxnh_quickshare_options[effect-contract]" id="effect-contract" type="checkbox" value="1" <?php if (isset($options['effect-contract'])) { checked('1', $options['effect-contract']); } ?> /> Contract</label><br/>

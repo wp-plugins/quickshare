@@ -304,6 +304,12 @@ li.quickshare-share {
 	-moz-transform: rotate(360deg);
 	transform: rotate(360deg);
 }
+.quickshare-text.quickshare-effect-spin span:hover {
+	/* Skew instead of spinning */	
+	-webkit-transform: skew(-10deg,-2deg);
+	-moz-transform: skew(-10deg,-2deg);
+	transform: skew(-10deg,-2deg);
+}
 .quickshare-effect-round span:hover {
 	border-radius: 32px;
 }
@@ -330,4 +336,14 @@ li.quickshare-share {
 	-webkit-transform: rotate(360deg) scale(1.12);
 	-moz-transform: rotate(360deg) scale(1.12);
 	transform: rotate(360deg) scale(1.12);
+}
+.quickshare-text.quickshare-effect-spin.quickshare-effect-contract span:hover {
+	-webkit-transform: skew(-10deg,-2deg) scale(.86);
+	-moz-transform: skew(-10deg,-2deg) scale(.86);
+	transform: skew(-10deg,-2deg) scale(.86);
+}
+.quickshare-text.quickshare-effect-spin.quickshare-effect-expand span:hover {
+	-webkit-transform: skew(-10deg,-2deg) scale(1.12);
+	-moz-transform: skew(-10deg,-2deg) scale(1.12);
+	transform: skew(-10deg,-2deg) scale(1.12);
 }
