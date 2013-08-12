@@ -292,6 +292,16 @@ li.quickshare-share {
 	cursor: default;
 	opacity: .7;
 }
+.quickshare-genericons li.quickshare-share:before,
+.quickshare-text.qs-genericons li.quickshare-share:before {
+	font-family: Genericons;
+	font-size: 16px;
+	-webkit-font-smoothing: antialiased;
+	content: "\f415";
+	height: 16px;
+	width: 16px;
+	margin-right: 3px;
+}
 
 /* 6 Special Effects */
 .quickshare-share {
