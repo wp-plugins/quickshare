@@ -3,7 +3,7 @@ Contributors: celloexpressions
 Tags: Social, Share, Sharing, Social Sharing, Social Media, Quick, Easy, Lightweight, No JS, Flexible, Customizable, Responsive, Facebook, Twitter, Pinterest, Linkedin, Google+, Tumblr, Email, Reddit, StumbleUpon
 Requires at least: 3.5
 Tested up to: 3.6
-Stable tag: 1.3
+Stable tag: 1.3.1
 Description: Add quick social sharing functions to your content. Challenge social sharing norms with a flexible design and fast performance.
 License: GPLv2
 
@@ -62,6 +62,9 @@ QuickShare does **not** work in WordPress versions below 3.5 (it will probably t
 2. Default plugin display with the Twenty Thirteen theme.
 
 == Changelog ==
+= 1.3.1 =
+* Fix php error from silly missing line of code 
+
 = 1.3 =
 * Improve the logic for whether or not to display QuickShare on a given object, fixing several hidden bugs in the process
 * Improve base styling of text display type, with better padding and improved small icon positioning
@@ -89,7 +92,7 @@ QuickShare does **not** work in WordPress versions below 3.5 (it will probably t
 * Compatible with WordPress 3.5-3.6
 
 == Upgrade Notice ==
-= 1.3 =
+= 1.3.1 =
 * Improve base styling for text display type, add share icon when using Genericons, improve logic for displaying QuickShare, other minor fixes.
 
 = 1.2 =

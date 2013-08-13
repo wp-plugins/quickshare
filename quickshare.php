@@ -3,7 +3,7 @@
  * Plugin Name: QuickShare
  * Plugin URI: http://wordpress.org/plugins/quickshare/
  * Description: Add quick social sharing functions to your content. Challenge social sharing norms with a flexible design and fast performance.
- * Version: 1.3
+ * Version: 1.3.1
  * Author: Nick Halsey
  * Author URI: http://celloexpressions.com/
  * Tags: Social, Share, Sharing, Social Sharing, Social Media, Quick, Easy, Lightweight, No JS, Flexible, Customizable, Responsive, Facebook, Twitter, Pinterest, Linkedin, Google+, Tumblr, Email, Reddit, StumbleUpon
@@ -58,7 +58,7 @@ function cxnh_quickshare_add_defaults() {
 		delete_option('cxnh_quickshare_options'); 
 		$arr = array(
 			//general
-			'plugin_version' => '1.3', // currently tracks initially installed plugin version
+			'plugin_version' => '1.3.1', // currently tracks initially installed plugin version
 			'settingspage' => 'design',
 			'displaytype' => 'icons',
 			'size' => '',
@@ -407,6 +407,7 @@ function cxnh_quickshare_getOption( $option, $options = null ) {
 
 // determine if we should display QuickShare on the current object
 function cxnh_quickshare_show_output() {
+	$options = get_option('quickshare_options');
 	$output = false;
 	if ( is_feed() )
 		$output = false;
