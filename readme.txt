@@ -3,7 +3,7 @@ Contributors: celloexpressions
 Tags: Social, Share, Sharing, Social Sharing, Social Media, Quick, Easy, Lightweight, No JS, Flexible, Customizable, Responsive, Facebook, Twitter, Pinterest, Linkedin, Google+, Tumblr, Email, Reddit, StumbleUpon
 Requires at least: 3.5
 Tested up to: 3.6
-Stable tag: 1.2
+Stable tag: 1.3
 Description: Add quick social sharing functions to your content. Challenge social sharing norms with a flexible design and fast performance.
 License: GPLv2
 
@@ -47,11 +47,8 @@ An example of a website using QuickShare in a custom context is <a href="http://
 = Browser Support =
 QuickShare is designed for modern browsers. I do not (and will not make much effort to) support IE8 or below, and do not support features that aren't achievable with minimal CSS in other outdated browsers (including, now, IE9). That being said, if you find a compatibility issue *with an easy fix*, let me know on the support forums and I'll consider including it. In the meantime, you can always add any desired CSS to the custom CSS field without worrying about losing plugin edits to updates. For the most part, everything should fail gracefully; older browsers won't see special effects like rounded corners, transitions/animations, box shadows, and opacity filters, but will be functionally fine. Genericons do not work in several browsers (including IE7/8 and IE9 mobile, but not IE9 desktop), so don't use that display option if you need lots of browser support.
 
-= Genericons are Different Sizes and Styles =
-I know. I didn't design Genericons (an icon font originally created for the Twenty Thirteen theme). They were designed as different sizes and that's just how they are (this design decision is part of the fun quirkiness of Genericons and Twenty Thirteen). They need to be sized at multiples of 16 for best results, so there's no good way to compensate for the discrepancies. If it bothers you, just use one of the other display options! You can probably use your own icon font with QuickShare and custom CSS too, if you want.
-
 = Icons are missing for Reddit and Stumbleupon =
-Well, the Genericons are actually missing and it's because there aren't Genericons for either icon (see above). Depending on who you ask, these sites are less popular and on the way out, but I included them in the plugin with partial support in case anyone really wants them.
+Well, the Genericons are actually missing and it's because there aren't Genericons for either icon. Depending on who you ask, these sites are less popular and on the way out, but I included them in the plugin with partial support in case anyone really wants them.
 
 = Sharing to additional social media networks =
 If you think QuickShare should support sharing to additional networks, please let me know in the support forums and I'll consider adding support. I don't intend to add any more networks that would be enabled by default (or automatically enabled after an update), though.
@@ -65,6 +62,14 @@ QuickShare does **not** work in WordPress versions below 3.5 (it will probably t
 2. Default plugin display with the Twenty Thirteen theme.
 
 == Changelog ==
+= 1.3 =
+* Improve the logic for whether or not to display QuickShare on a given object, fixing several hidden bugs in the process
+* Improve base styling of text display type, with better padding and improved small icon positioning
+* Add a small share icon before "Share" text when genericons are being used
+* Add "skew" hover effect, in place of "spin" effect, for text display type
+* Switch from deprecated jQuery live function to jQuery on function on admin settings page
+* Update plugin banner image
+
 = 1.2 =
 * Change plugin output html strucure from `<ul><a><li>` to `<ul><li><a><span>`. This allows the output to be valid html (`<a>`s aren't allowed as direct children of `<ul>`s). Refactored plugin CSS accordingly and was able to remove much of the styling for the share text. Custom CSS will probably also require some minor refactoring.
 * Hide the responsive-small option when the size is already set to small.
@@ -84,11 +89,14 @@ QuickShare does **not** work in WordPress versions below 3.5 (it will probably t
 * Compatible with WordPress 3.5-3.6
 
 == Upgrade Notice ==
+= 1.3 =
+* Improve base styling for text display type, add share icon when using Genericons, improve logic for displaying QuickShare, other minor fixes.
+
 = 1.2 =
 * Refactored html structure so that it validates, adjusted CSS accorginly. Custom CSS will need similar adjusting. Other minor fixes and enhancements.
 
 = 1.1 =
-* A couple of trivial but significant bugfixes, add a UI for basic responsiveness
+* A couple of trivial but significant bugfixes, add a UI for basic responsiveness.
 
 = 1.0 =
 * Initial public release
