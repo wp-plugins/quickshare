@@ -405,6 +405,23 @@ function cxnh_quickshare_getOption( $option, $options = null ) {
 		return false;
 }
 
+// determine if we should display QuickShare on the current object
+function cxnh_quickshare_show_output() {
+	$output = false;
+	if ( is_feed() )
+		$output = false;
+	elseif ( cxnh_quickshare_getOption('everywhere',$options) )
+		$output = true;
+	elseif ( cxnh_quickshare_getOption('posts',$options) && get_post_type() == 'post' )
+		$output = true;
+	elseif ( cxnh_quickshare_getOption('pages',$options) && get_post_type() == 'page' )
+		$output = true;
+	elseif ( cxnh_quickshare_getOption('attachments',$options) && get_post_type() == 'attachment' ) 
+		$output = true;
+	
+	return $output;
+}
+
 // output
 add_filter('the_content', 'cxnh_add_quickshare_output',15);
 add_action('wp_enqueue_scripts','cxnh_quickshare_styles');
@@ -418,12 +435,12 @@ function cxnh_quickshare_head() {
 	$options = get_option('cxnh_quickshare_options');
 	
 	// add open graph tags if appropriate
-	if( cxnh_quickshare_getOption('ogmeta',$options) && ( (is_single() && cxnh_quickshare_getOption('posts',$options)) || (is_page() && cxnh_quickshare_getOption('ogimage',$options)) ) ){
+	if( cxnh_quickshare_getOption('ogmeta',$options) && is_singular() && cxnh_quickshare_show_output() ) {
 		echo '<meta name="og:title" content="' . get_the_title() . '" />';
 		echo '<meta name="og:image" content="' . cxnh_quickshare_get_post_image() . '" />';
 		echo '<meta name="og:url" content="' . get_permalink() . '" />';
 		echo '<meta name="og:description" content="' . cxnh_quickshare_get_post_description() . '" />';
-		if(!is_front_page())
+		if( !is_front_page() )
 			echo '<meta name="og:site_name" content="' . get_bloginfo('name') . '" />'; // to be used if this object/webpage is part of a larger website - not really the case for the homepage
 	}
 	
@@ -492,15 +509,12 @@ function cxnh_quickshare_head() {
 // add_quickshare_optput is the filter that appends quickshare to the_content
 function cxnh_add_quickshare_output( $content ) {
 	$options = get_option('cxnh_quickshare_options');
-	if( is_feed() || (!cxnh_quickshare_getOption('everywhere',$options) && 
-	  ( ( !cxnh_quickshare_getOption('posts',$options) && get_post_type() == 'post')
-	  || ( !cxnh_quickshare_getOption('pages',$options) && get_post_type() == 'page')
-	  || ( !cxnh_quickshare_getOption('attachments',$options) && get_post_type() == 'attachment') ) ) )
-		return $content;
-	else {
+	if( cxnh_quickshare_show_output() ) {
 		$sharecode = cxnh_quickshare_makeOutput();
 		return $content . $sharecode;
 	}
+	else
+		return $content;
 }
 
 // do_quickshare_output() is used for custom quickshare output in template files
