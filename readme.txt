@@ -53,6 +53,11 @@ Well, the Genericons are actually missing and it's because there aren't Generico
 = Sharing to additional social media networks =
 If you think QuickShare should support sharing to additional networks, please let me know in the support forums and I'll consider adding support. I don't intend to add any more networks that would be enabled by default (or automatically enabled after an update), though.
 
+= Sharing Numbers/statistics =
+The one caveat to the bloat-less implementation and philosophy that QuickShare uses is that there is no good way to track shares. It is technically possible to track the number of times users take the initial action of pressing the share button on your site; however, there is no way to confirm that the action was completed without pulling in data from the various networks (typically via their javascripts). Furthermore, there is no clean way to store internal statistics (number of times each action was initiated) without polluting the database and making the sharing process more technically complex. Therefore, I don't plan on adding this functionality; if you find a possible alternative solution, please let me know and I will consider it. You should be able to track QuickShare shares as external links with analytics software such as Google Analytics if you're interested in tracking shares (versus displaying the data publically).
+
+
+
 = WordPress Version Support =
 QuickShare does **not** work in WordPress versions below 3.5 (it will probably throw a php fatal error when attempting to activate). For best results, always use the latest version of WordPress.
 
