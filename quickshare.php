@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: QuickShare
- * Plugin URI: http://wordpress.org/plugins/quickshare/
+ * Plugin URI: http://celloexpressions.com/plugins/quickshare/
  * Description: Add quick social sharing functions to your content. Challenge social sharing norms with a flexible design and fast performance.
  * Version: 1.3.1
  * Author: Nick Halsey
@@ -223,7 +223,7 @@ function cxnh_quickshare_render_form(){
 				<label><input name="cxnh_quickshare_options[everywhere]" id="displayeverywhere" type="checkbox" value="1" <?php if (isset($options['everywhere'])) { checked('1', $options['everywhere']); } ?> /> Everywhere the_content() is used (including custom post types)</label><br class="display-option"/>
 				<label class="display-option"><input name="cxnh_quickshare_options[posts]" type="checkbox" value="1" <?php if (isset($options['posts'])) { checked('1', $options['posts']); } ?> /> Posts</label><br class="display-option"/>
 				<label class="display-option"><input name="cxnh_quickshare_options[pages]" type="checkbox" value="1" <?php if (isset($options['pages'])) { checked('1', $options['pages']); } ?> /> Pages</label><br class="display-option"/>
-				<label class="display-option"><input name="cxnh_quickshare_options[attachments]" type="checkbox" value="1" <?php if (isset($options['attachments'])) { checked('1', $options['attachments']); } ?> /> Attachments <span style="font-style: italics;">(may not display in some themes if the image description field is empty)</span></label>
+				<label class="display-option"><input name="cxnh_quickshare_options[attachments]" type="checkbox" value="1" <?php if (isset($options['attachments'])) { checked('1', $options['attachments']); } ?> /> Media Attachments <span style="font-style: italics;">(may not display in some themes if the description field is empty)</span></label>
 				<p>If you want to display the QuickShare links anywhere else, use <code>&lt;?php do_quickshare_output( $url, $title, $source, $description, $imgurl ); ?&gt;</code> in your templates.</p>
 			</td>
 		</tr>
