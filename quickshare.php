@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: QuickShare
- * Plugin URI: http://wordpress.org/plugins/quickshare/
+ * Plugin URI: http://celloexpressions.com/plugins/quickshare/
  * Description: Add quick social sharing functions to your content. Challenge social sharing norms with a flexible design and fast performance.
  * Version: 1.3.1
  * Author: Nick Halsey
