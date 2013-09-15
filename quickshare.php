@@ -411,6 +411,8 @@ function cxnh_quickshare_show_output() {
 	$output = false;
 	if ( is_feed() )
 		$output = false;
+	elseif ( $in_excerpt )
+		$output = false;
 	elseif ( cxnh_quickshare_getOption('everywhere',$options) )
 		$output = true;
 	elseif ( cxnh_quickshare_getOption('posts',$options) && get_post_type() == 'post' )
@@ -516,6 +518,12 @@ function cxnh_add_quickshare_output( $content ) {
 	}
 	else
 		return $content;
+}
+
+add_filter('get_the_excerpt', 'cxnh_quickshare_inexcerpt', 1);
+function cxnh_quickshare_inexcerpt( $excerpt ) {
+	$in_excerpt = true; // TODO: flag that we're in the excerpt so that we don't actually filter it in the_content
+	return $excerpt;
 }
 
 // do_quickshare_output() is used for custom quickshare output in template files
