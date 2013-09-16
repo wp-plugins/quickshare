@@ -408,10 +408,11 @@ function cxnh_quickshare_getOption( $option, $options = null ) {
 // determine if we should display QuickShare on the current object
 function cxnh_quickshare_show_output() {
 	$options = get_option('quickshare_options');
+	global $quickshare_in_excerpt;
 	$output = false;
 	if ( is_feed() )
 		$output = false;
-	elseif ( $in_excerpt )
+	elseif ( $quickshare_in_excerpt )
 		$output = false;
 	elseif ( cxnh_quickshare_getOption('everywhere',$options) )
 		$output = true;
@@ -421,6 +422,8 @@ function cxnh_quickshare_show_output() {
 		$output = true;
 	elseif ( cxnh_quickshare_getOption('attachments',$options) && get_post_type() == 'attachment' ) 
 		$output = true;
+	
+	unset($quickshare_in_excerpt);
 	
 	return $output;
 }
@@ -520,9 +523,13 @@ function cxnh_add_quickshare_output( $content ) {
 		return $content;
 }
 
+// if we're in the_excerpt, set a flag so that we don't display QuickShare
+// necessary because WordPress applies the_content filters to the_excerpt
 add_filter('get_the_excerpt', 'cxnh_quickshare_inexcerpt', 1);
 function cxnh_quickshare_inexcerpt( $excerpt ) {
-	$in_excerpt = true; // TODO: flag that we're in the excerpt so that we don't actually filter it in the_content
+	global $quickshare_in_excerpt;
+	$quickshare_in_excerpt = true;
+	
 	return $excerpt;
 }
 
