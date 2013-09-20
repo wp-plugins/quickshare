@@ -10,6 +10,7 @@ Contents:
 4 Share Types (mapping icons/glyphs to each share option)
 5 Styling for Share Text
 6 Special Effects
+7 Media Queries
 
 */
 
@@ -356,4 +357,11 @@ li.quickshare-share {
 	-webkit-transform: skew(-10deg,-2deg) scale(1.12);
 	-moz-transform: skew(-10deg,-2deg) scale(1.12);
 	transform: skew(-10deg,-2deg) scale(1.12);
+}
+
+/* 7 Media Queries */
+@media print {
+	.quickshare-container {
+		display: none;
+	}
 }
