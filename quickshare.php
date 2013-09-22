@@ -158,6 +158,9 @@ function cxnh_quickshare_admin_head(){
 			top: 50%;
 			padding: .4em 5px;
 			background: #fff;
+			cursor: move;
+			border: none;
+			box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.1);
 		}
 		@media only screen and (max-width: 900px) {
 			.quickshare-container { display: none; }
@@ -353,7 +356,7 @@ function cxnh_quickshare_render_form(){
 			</td>
 		</tr>
 		<tr><td colspan="2">
-		<div class="quickshare-container">
+		<div id="quickshare-preview" class="quickshare-container">
 		<ul class="<?php echo cxnh_quickshare_get_ulclass(); ?>" id="quickshare-design-preview">
 			<li class="quickshare-share"><?php echo cxnh_quickshare_getOption('sharelabel',$options); ?></li> 
 			<?php if(cxnh_quickshare_getOption('facebook',$options)){ ?><li><a href="javascript:void(0)" title="Share on Facebook"><span class="quickshare-facebook">Facebook</span></a></li><?php } ?>
