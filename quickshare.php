@@ -73,6 +73,7 @@ function cxnh_quickshare_add_defaults() {
 			'pages' => 0,
 			'attachments' => 1,
 			'everything' => 0,
+			'excluded_ids' => '',
 			
 			'facebook' => 1,
 			'twitter' => 1,
@@ -211,6 +212,10 @@ if (isset($_GET['page']) && $_GET['page'] == 'quickshare/quickshare.php') {
 }
 function cxnh_quickshare_render_form(){
 	$options = get_option('cxnh_quickshare_options');
+
+	// added in 1.4
+	if(!array_key_exists('excluded_ids',$options))
+		$options['excluded_ids'] = '';
 ?>
 <div class="wrap">
 	<h2 class="nav-tab-wrapper">
@@ -228,6 +233,8 @@ function cxnh_quickshare_render_form(){
 				<label class="display-option"><input name="cxnh_quickshare_options[pages]" type="checkbox" value="1" <?php if (isset($options['pages'])) { checked('1', $options['pages']); } ?> /> Pages</label><br class="display-option"/>
 				<label class="display-option"><input name="cxnh_quickshare_options[attachments]" type="checkbox" value="1" <?php if (isset($options['attachments'])) { checked('1', $options['attachments']); } ?> /> Media Attachments <span style="font-style: italics;">(may not display in some themes if the description field is empty)</span></label>
 				<p>If you want to display the QuickShare links anywhere else, use <code>&lt;?php do_quickshare_output( $url, $title, $source, $description, $imgurl ); ?&gt;</code> in your templates.</p>
+				<h5>Excluded Posts/Pages:</h5>
+				<label><input name="cxnh_quickshare_options[excluded_ids]" type="text" value="<?php echo $options['excluded_ids']; ?>" /> Enter a comma-separated list of post IDs (of any type) that QuickShare won't display on.</label>				
 			</td>
 		</tr>
 		<tr>
@@ -392,6 +399,20 @@ function cxnh_quickshare_validate_options($input) {
 	// sanitize numeric inputs
 	$input['borderradius'] = absint($input['borderradius']);
 	
+//	sanitize_hex_color is only available in the theme customizer...
+//	$input['color'] = sanitize_hex_color( $input['color'] );
+//	$input['hovercolor'] = sanitize_hex_color( $input['hovercolor'] );
+//	$input['bgcolor'] = sanitize_hex_color( $input['bgcolor'] );
+	
+	// sanitize the excluded_ids field
+	if( array_key_exists( 'excluded_ids', $input ) ) {
+		$ids_arr = explode( ',', $input['excluded_ids'] );
+		$ids_arr_2 = array();
+		foreach( $ids_arr as $id )
+			$ids_arr_2[] = absint( trim( $id ) );
+		$input['excluded_ids'] = implode( ',', array_filter( $ids_arr_2 ) );
+	}
+	
 	// validate css
 	//TODO: some form of css validation to minimize user error
 	
@@ -410,9 +431,12 @@ function cxnh_quickshare_getOption( $option, $options = null ) {
 
 // determine if we should display QuickShare on the current object
 function cxnh_quickshare_show_output() {
-	$options = get_option('quickshare_options');
+	$options = get_option('cxnh_quickshare_options');
+	global $post;
 	global $quickshare_in_excerpt;
+	
 	$output = false;
+	
 	if ( is_feed() )
 		$output = false;
 	elseif ( $quickshare_in_excerpt )
@@ -425,6 +449,13 @@ function cxnh_quickshare_show_output() {
 		$output = true;
 	elseif ( cxnh_quickshare_getOption('attachments',$options) && get_post_type() == 'attachment' ) 
 		$output = true;
+	
+	$xids = cxnh_quickshare_getOption('excluded_ids',$options);
+	if($xids) {
+		$xids_arr = explode(',',$xids);
+		if(in_array($post->ID,$xids_arr))
+			$output = false;
+	}
 	
 	unset($quickshare_in_excerpt);
 	
