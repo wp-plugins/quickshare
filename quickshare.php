@@ -519,6 +519,11 @@ function cxnh_quickshare_head() {
 	<?php
 }
 
+// add the QuickShare shortcode
+add_shortcode( 'quickshare', 'cxnh_do_quickshare_shortcode' );
+function cxnh_do_quickshare_shortcode( $atts ){
+	return cxnh_quickshare_makeOutput();
+}
 
 // cxnh_add_quickshare_optput is the filter that appends quickshare to the_content
 add_filter('the_content', 'cxnh_add_quickshare_output',15);
