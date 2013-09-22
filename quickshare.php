@@ -60,7 +60,7 @@ function cxnh_quickshare_add_defaults() {
 			//general
 			'plugin_version' => '1.3.1', // currently tracks initially installed plugin version
 			'settingspage' => 'design',
-			'displaytype' => 'icons',
+			'displaytype' => 'genericons',
 			'size' => '',
 			'borderradius' => '3',
 			'respond_small' => '600', // Android uses this value to distinguish between phone & tablet
@@ -88,18 +88,18 @@ function cxnh_quickshare_add_defaults() {
 			'hidepintrest' => 0,
 			
 			//common to 2 styles
-			'inherit_color' => 1,
+			'inherit_color' => 0,
 			'bgtransparent' => 1,
-			'color' => '#000090',
-			'hovercolor' => '#a00000',
-			'bgcolor' => '#500000',
+			'color' => '#2c12ed',
+			'hovercolor' => '#bb2255',
+			'bgcolor' => '#f1e6b3',
 			'customcss' => '',
 			
 			//icons style
 			
 			//genericons style
 			'monochrome' => 1,
-			'monochrome_hover' => 1,
+			'monochrome_hover' => 0,
 			
 			//text style
 			'text_icons' => 1,
@@ -110,7 +110,7 @@ function cxnh_quickshare_add_defaults() {
 			'effect-round' => 0,
 			'effect-glow' => 0,
 			'effect-contract' => 0,
-			'effect-expand' => 0
+			'effect-expand' => 1
 		);
 		update_option('cxnh_quickshare_options', $arr);
 	}
