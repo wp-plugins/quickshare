@@ -102,6 +102,7 @@ Contents:
 	opacity: .7;
 	transition: .2s all cubic-bezier(0.636,0.197,0.0202,0.352);
 }
+.quickshare-genericons.monochrome span,
 .quickshare-genericons span:hover {
 	opacity: 1;
 }
