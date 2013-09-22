@@ -16,9 +16,13 @@ You can choose which social media sites to include from: Facebook, Twitter, Pint
 
 The share bar appearance is highly customizable and share functions can be displayed as either icons, Genericons or text. Each display method features different customization options; customize through the settings page or with custom CSS.
 
+QuickShare can be displayed at the end of ever post, page, and/or attachment, or all post types automatically. Or, you can use the `[quickshare]` shortcode to display QuickShare wherever you'd like in any of your posts/pages. You can also exclude posts by id, or even use a custom output function in your templates, including the ability to override the default generated sharing data.
+
 As a bonus, QuickShare includes several built-in CSS3 effects for hover state animations.
 
-*Please visit the plugin support forum for help with custom css snippets and/or feature requests.*
+**Please visit the plugin support forum for help with custom css snippets and/or feature requests!**
+
+*Please note that QuickShare does not and will not support link tracking, because of its goal of being simple and lightweight. You can use a 3rd-party tool like Google Analytics to track shares as external links.*
 
 == Installation ==
 1. Take the easy route and install through the WordPress plugin adder OR
@@ -30,8 +34,8 @@ As a bonus, QuickShare includes several built-in CSS3 effects for hover state an
 == Frequently Asked Questions ==
 = Showing/Hiding QuickShare on specific pages and in specific parts of pages =
 There are several ways to control where QuickShare is displayed:
-* You can automatically have QuickShare filter on `the_content` for posts, pages, attachments, or all posts of any type, from the QuickShare Config settings page
-* You can hide QuickShare from certain posts/pages that are using the automatic filter (see above) by listing their post IDs in the field below the automatic filters. The post ID is numeric and can be found in the URL of a post's edit screen. This is the prefered method of hiding QuickShare from the homepage, or a contact page, etc. REQUIRES VERSION 1.4+
+* You can automatically have QuickShare filter on `the_content` for posts, pages, attachments, or all posts of any type, from the QuickShare Config settings page.
+* You can hide QuickShare from certain posts/pages that are using the automatic filter (see above) by listing their post IDs in the field below the automatic filters. The post ID is numeric and can be found in the URL of a post's edit screen. This is the preferred method of hiding QuickShare from the homepage, or a contact page, etc. REQUIRES VERSION 1.4+
 * Conversely, you can show QuickShare on specific pages by using the `[quickshare]` shortcode. This shortcode can be placed anywhere within a post or page, including in multiple places. You can use the shortcode with or without the automatic filtering of displaying on posts/pages/attachments, but be careful not to accidentally use the shortcode at the end of a post where the automatic filtering is turned on, because you'll get two instances of QuickShare right next to each other. To use the shortcode, simply add "`[quickshare]`" to your posts/pages wherever you want QuickShare to display. It's that easy! REQUIRES VERSION 1.4+
 * Theme developers can use `<?php do_quickshare_output( $url, $title, $source, $description, $imgurl ); ?>` in their template files wherever sharing is desired, with the optional parameters allowing custom share data to be provided (see details below, under "share bar doesn't display").
 * Plugin developers can do additional things like automatically displaying QuickShare at the beginning of the post instead of the end, or providing an alternate icon set. QuickShare is designed to be flexible, so (with the exception of stats) you should be able to do pretty much whatever you want.
@@ -62,7 +66,7 @@ Well, the Genericons are actually missing and it's because there aren't Generico
 If you think QuickShare should support sharing to additional networks, please let me know in the support forums and I'll consider adding support. I don't intend to add any more networks that would be enabled by default (or automatically enabled after an update), though.
 
 = Sharing Numbers/statistics =
-The one caveat to the bloat-less implementation and philosophy that QuickShare uses is that there is no good way to track shares. It is technically possible to track the number of times users take the initial action of pressing the share button on your site; however, there is no way to confirm that the action was completed without pulling in data from the various networks (typically via their javascripts). Furthermore, there is no clean way to store internal statistics (number of times each action was initiated) without polluting the database and making the sharing process more technically complex. Therefore, I don't plan on adding this functionality; if you find a possible alternative solution, please let me know and I will consider it. You should be able to track QuickShare shares as external links with analytics software such as Google Analytics if you're interested in tracking shares (versus displaying the data publically).
+The one caveat to the bloat-less implementation and philosophy that QuickShare uses is that there is no good way to track shares. It is technically possible to track the number of times users take the initial action of pressing the share button on your site; however, there is no way to confirm that the action was completed without pulling in data from the various networks (typically via their javascripts). Furthermore, there is no clean way to store internal statistics (number of times each action was initiated) without polluting the database and making the sharing process more technically complex. Therefore, I don't plan on adding this functionality; if you find a possible alternative solution, please let me know and I will consider it. You should be able to track QuickShare shares as external links with analytics software such as Google Analytics if you're interested in tracking shares (versus displaying the data publicly).
 
 = WordPress Version Support =
 QuickShare does **not** work in WordPress versions below 3.5 (it will probably throw a php fatal error when attempting to activate). For best results, always use the latest version of WordPress.
@@ -75,9 +79,11 @@ QuickShare does **not** work in WordPress versions below 3.5 (it will probably t
 == Changelog ==
 = 1.4 =
 * Introduce a shortcode for custom QuickShare output. You can now use `[quickshare]` anywhere in your posts/pages, even if QuickShare is disabled for that post type by default.
-* @TODO: excluded_ids
-* Don't display QuickShare on `the_excerpt`, which can get especialy nasty if themes strip out html in a later filter. You can manually add QuickShare back to these places in your templates.
+* Allow QuickShare to be excluded (hidden) from specific pages or posts, by id, in the settings page.
+* Don't display QuickShare on `the_excerpt`, which can get especially nasty if themes strip out html in a later filter. You can manually add QuickShare back to these places in your templates.
 * Hide QuickShare when printing web pages.
+* Remove the opacity filter when using monochrome Genericons; you can set these colors to exactly the values you want for normal and hover states, so you don't need an opacity change to highlight it on mouseover.
+* Tweak defaults to help encourage users to play around with the design options. The QuickShare Design settings page is meant to be fun, you can't really "break" anything there!
 * Make the admin preview position draggable.
 * Update Genericons to version 3.0.
 
@@ -93,11 +99,11 @@ QuickShare does **not** work in WordPress versions below 3.5 (it will probably t
 * Update plugin banner image
 
 = 1.2 =
-* Change plugin output html strucure from `<ul><a><li>` to `<ul><li><a><span>`. This allows the output to be valid html (`<a>`s aren't allowed as direct children of `<ul>`s). Refactored plugin CSS accordingly and was able to remove much of the styling for the share text. Custom CSS will probably also require some minor refactoring.
+* Change plugin output html structure from `<ul><a><li>` to `<ul><li><a><span>`. This allows the output to be valid html (`<a>`s aren't allowed as direct children of `<ul>`s). Refactored plugin CSS accordingly and was able to remove much of the styling for the share text. Custom CSS will probably also require some minor refactoring.
 * Hide the responsive-small option when the size is already set to small.
 * Add help text for the responsive design feature.
 * Prevent QuickShare from displaying in feeds (ie, RSS).
-* Fix broken updating of visible fields when intially changing display type.
+* Fix broken updating of visible fields when initially changing display type.
 * Add a reminder to always use `if_function_exists()` in conjunction with `do_quickshare_output()` to the FAQ
 
 = 1.1 =
@@ -107,15 +113,18 @@ QuickShare does **not** work in WordPress versions below 3.5 (it will probably t
 * Note that Google+ also uses Open Graph data, like Facebook, so this option is **highly** recommended. It could help out with SEO too.
 
 = 1.0 =
-* First publically available version of the plugin.
+* First publicly available version of the plugin.
 * Compatible with WordPress 3.5-3.6
 
 == Upgrade Notice ==
+= 1.4 =
+* Better support for displaying QuickShare exactly where you want it, including new `[quickshare]` shortcode. Several other features and tweaks, see changelog.
+
 = 1.3.1 =
 * Improve base styling for text display type, add share icon when using Genericons, improve logic for displaying QuickShare, other minor fixes.
 
 = 1.2 =
-* Refactored html structure so that it validates, adjusted CSS accorginly. Custom CSS will need similar adjusting. Other minor fixes and enhancements.
+* Refactored html structure so that it validates, adjusted CSS accordingly. Custom CSS will need similar adjusting. Other minor fixes and enhancements.
 
 = 1.1 =
 * A couple of trivial but significant bugfixes, add a UI for basic responsiveness.
