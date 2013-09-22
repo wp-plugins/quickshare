@@ -28,6 +28,14 @@ As a bonus, QuickShare includes several built-in CSS3 effects for hover state an
 1. Make sure that your theme has the `wp_head()` action hook and uses `the_content()`; this is where QuickShare hooks into. Alternately, add `<?php do_quickshare_output(); ?>` to your template files.
 
 == Frequently Asked Questions ==
+= Showing/Hiding QuickShare on specific pages and in specific parts of pages =
+There are several ways to control where QuickShare is displayed:
+* You can automatically have QuickShare filter on `the_content` for posts, pages, attachments, or all posts of any type, from the QuickShare Config settings page
+* You can hide QuickShare from certain posts/pages that are using the automatic filter (see above) by listing their post IDs in the field below the automatic filters. The post ID is numeric and can be found in the URL of a post's edit screen. This is the prefered method of hiding QuickShare from the homepage, or a contact page, etc. REQUIRES VERSION 1.4+
+* Conversely, you can show QuickShare on specific pages by using the `[quickshare]` shortcode. This shortcode can be placed anywhere within a post or page, including in multiple places. You can use the shortcode with or without the automatic filtering of displaying on posts/pages/attachments, but be careful not to accidentally use the shortcode at the end of a post where the automatic filtering is turned on, because you'll get two instances of QuickShare right next to each other. To use the shortcode, simply add "`[quickshare]`" to your posts/pages wherever you want QuickShare to display. It's that easy! REQUIRES VERSION 1.4+
+* Theme developers can use `<?php do_quickshare_output( $url, $title, $source, $description, $imgurl ); ?>` in their template files wherever sharing is desired, with the optional parameters allowing custom share data to be provided (see details below, under "share bar doesn't display").
+* Plugin developers can do additional things like automatically displaying QuickShare at the beginning of the post instead of the end, or providing an alternate icon set. QuickShare is designed to be flexible, so (with the exception of stats) you should be able to do pretty much whatever you want.
+
 = Optimizing Pinterest Sharing (and images) =
 Pinterest is image-centric, so any content to be shared via Pinterest should include an image. QuickShare attempts to find an image in each post by first looking for a featured image, then grabbing the first attached image, looking for a raw image tag, or finally falling beck to a site-wide default image that you can set. You can also hide Pinterest sharing if no post image is found. The post image will also be used for Facebook and Google+ sharing, by default (if open graph meta tags are enabled). For best results, always set a featured image in your post.
 
@@ -56,8 +64,6 @@ If you think QuickShare should support sharing to additional networks, please le
 = Sharing Numbers/statistics =
 The one caveat to the bloat-less implementation and philosophy that QuickShare uses is that there is no good way to track shares. It is technically possible to track the number of times users take the initial action of pressing the share button on your site; however, there is no way to confirm that the action was completed without pulling in data from the various networks (typically via their javascripts). Furthermore, there is no clean way to store internal statistics (number of times each action was initiated) without polluting the database and making the sharing process more technically complex. Therefore, I don't plan on adding this functionality; if you find a possible alternative solution, please let me know and I will consider it. You should be able to track QuickShare shares as external links with analytics software such as Google Analytics if you're interested in tracking shares (versus displaying the data publically).
 
-
-
 = WordPress Version Support =
 QuickShare does **not** work in WordPress versions below 3.5 (it will probably throw a php fatal error when attempting to activate). For best results, always use the latest version of WordPress.
 
@@ -67,6 +73,14 @@ QuickShare does **not** work in WordPress versions below 3.5 (it will probably t
 2. Default plugin display with the Twenty Thirteen theme.
 
 == Changelog ==
+= 1.4 =
+* Introduce a shortcode for custom QuickShare output. You can now use `[quickshare]` anywhere in your posts/pages, even if QuickShare is disabled for that post type by default.
+* @TODO: excluded_ids
+* Don't display QuickShare on `the_excerpt`, which can get especialy nasty if themes strip out html in a later filter. You can manually add QuickShare back to these places in your templates.
+* Hide QuickShare when printing web pages.
+* Make the admin preview position draggable.
+* Update Genericons to version 3.0.
+
 = 1.3.1 =
 * Fix php error from silly missing line of code 
 
