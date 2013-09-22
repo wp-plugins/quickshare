@@ -3,7 +3,7 @@
  * Plugin Name: QuickShare
  * Plugin URI: http://celloexpressions.com/plugins/quickshare/
  * Description: Add quick social sharing functions to your content. Challenge social sharing norms with a flexible design and fast performance.
- * Version: 1.3.1
+ * Version: 1.4
  * Author: Nick Halsey
  * Author URI: http://celloexpressions.com/
  * Tags: Social, Share, Sharing, Social Sharing, Social Media, Quick, Easy, Lightweight, No JS, Flexible, Customizable, Responsive, Facebook, Twitter, Pinterest, Linkedin, Google+, Tumblr, Email, Reddit, StumbleUpon
@@ -58,7 +58,7 @@ function cxnh_quickshare_add_defaults() {
 		delete_option('cxnh_quickshare_options'); 
 		$arr = array(
 			//general
-			'plugin_version' => '1.3.1', // currently tracks initially installed plugin version
+			'plugin_version' => '1.4', // currently tracks initially installed plugin version
 			'settingspage' => 'design',
 			'displaytype' => 'genericons',
 			'size' => '',
