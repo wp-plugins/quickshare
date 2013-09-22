@@ -431,22 +431,26 @@ function cxnh_quickshare_show_output() {
 	return $output;
 }
 
-// output
-add_filter('the_content', 'cxnh_add_quickshare_output',15);
+// All of the functions that display the QuickShare output.
+// Several things are run site-wide (such as styles & og meta) because we don't know
+// where the user might be using the custom output functions or the shortcode, and
+// this data won't hurt anything anyway.
 add_action('wp_enqueue_scripts','cxnh_quickshare_styles');
-add_action('wp_head','cxnh_quickshare_head');
 function cxnh_quickshare_styles() {
 	wp_enqueue_style('quickshare',plugins_url('/quickshare.css',__FIlE__));
 	if(cxnh_quickshare_getOption('displaytype') == 'genericons' || (cxnh_quickshare_getOption('displaytype') == 'text' && cxnh_quickshare_getOption('text_icons')))
 		wp_enqueue_style('genericons',plugins_url('/genericons/genericons.css',__FILE__));
 }
+
+add_action('wp_head','cxnh_quickshare_head');
 function cxnh_quickshare_head() {
 	$options = get_option('cxnh_quickshare_options');
 	
 	// add open graph tags if appropriate
-	if( cxnh_quickshare_getOption('ogmeta',$options) && is_singular() && cxnh_quickshare_show_output() ) {
+	if( cxnh_quickshare_getOption('ogmeta',$options) && is_singular() ) {
 		echo '<meta name="og:title" content="' . get_the_title() . '" />';
-		echo '<meta name="og:image" content="' . cxnh_quickshare_get_post_image() . '" />';
+		if(cxnh_quickshare_get_post_image()) 
+			echo '<meta name="og:image" content="' . cxnh_quickshare_get_post_image() . '" />';
 		echo '<meta name="og:url" content="' . get_permalink() . '" />';
 		echo '<meta name="og:description" content="' . cxnh_quickshare_get_post_description() . '" />';
 		if( !is_front_page() )
@@ -515,7 +519,10 @@ function cxnh_quickshare_head() {
 	<?php
 }
 
-// add_quickshare_optput is the filter that appends quickshare to the_content
+
+// cxnh_add_quickshare_optput is the filter that appends quickshare to the_content
+add_filter('the_content', 'cxnh_add_quickshare_output',15);
+
 function cxnh_add_quickshare_output( $content ) {
 	$options = get_option('cxnh_quickshare_options');
 	if( cxnh_quickshare_show_output() ) {
@@ -536,11 +543,13 @@ function cxnh_quickshare_inexcerpt( $excerpt ) {
 	return $excerpt;
 }
 
-// do_quickshare_output() is used for custom quickshare output in template files
+// do_quickshare_output() is used for custom QuickShare output in template files
 function do_quickshare_output( $url=null, $title=null, $source=null, $description=null, $imgurl=null ) {
 	$sharecode = cxnh_quickshare_makeOutput( $url, $title, $source, $description, $imgurl );
 	echo $sharecode;
 }
+
+// create the actual html for QuickShare, and return it
 function cxnh_quickshare_makeOutput( $url=null, $title=null, $source=null, $description=null, $imgurl=null ) {
 	$options = get_option('cxnh_quickshare_options');
 	global $post;
@@ -581,6 +590,7 @@ function cxnh_quickshare_makeOutput( $url=null, $title=null, $source=null, $desc
 <?php
 	return ob_get_clean();
 }
+
 function cxnh_quickshare_get_ulclass() {
 		$options = get_option('cxnh_quickshare_options');
 		$type = cxnh_quickshare_getOption('displaytype',$options);
@@ -653,6 +663,7 @@ function cxnh_quickshare_get_post_image() {
 	else
 		return cxnh_quickshare_getOption('image');
 }
+
 function cxnh_quickshare_get_post_description() {
 	// essentially a summary of get_the_excerpt(), but avoiding most filters other than custom ones (otherwise results in infinite loop)
 	$post = get_post();
