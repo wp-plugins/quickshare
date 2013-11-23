@@ -267,8 +267,9 @@ Contents:
 .quickshare-reddit {
 	background-image: url('icons/reddit.png');
 }
-.quickshare-genericons .quickshare-reddit {
-	display: none;
+.quickshare-reddit:before {
+	content: '\f222';
+	color: #222;
 }
 .quickshare-tumblr {
 	background-image: url('icons/tumblr.png');
@@ -283,8 +284,9 @@ Contents:
 .quickshare-stumbleupon {
 	background-image: url('icons/stumbleupon.png');
 }
-.quickshare-genericons .quickshare-stumbleupon {
-	display: none;
+.quickshare-stumbleupon:before {
+	content: '\f223';
+	color: #cf4c33;
 }
 
 /* 5 Share Text Styles: must be after other styles to override */
