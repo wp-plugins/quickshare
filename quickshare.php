@@ -3,7 +3,7 @@
  * Plugin Name: QuickShare
  * Plugin URI: http://celloexpressions.com/plugins/quickshare/
  * Description: Add quick social sharing functions to your content. Challenge social sharing norms with a flexible design and fast performance.
- * Version: 1.4
+ * Version: 1.5
  * Author: Nick Halsey
  * Author URI: http://celloexpressions.com/
  * Tags: Social, Share, Sharing, Social Sharing, Social Media, Quick, Easy, Lightweight, No JS, Flexible, Customizable, Responsive, Facebook, Twitter, Pinterest, Linkedin, Google+, Tumblr, Email, Reddit, StumbleUpon
@@ -259,8 +259,8 @@ function cxnh_quickshare_render_form(){
 				<label><input name="cxnh_quickshare_options[linkedin]" type="checkbox" value="1" <?php if (isset($options['linkedin'])) { checked('1', $options['linkedin']); } ?> /> Linkedin</label><br/>
 				<label><input name="cxnh_quickshare_options[googleplus]" type="checkbox" value="1" <?php if (isset($options['googleplus'])) { checked('1', $options['googleplus']); } ?> /> Google+</label><br/>
 				<label><input name="cxnh_quickshare_options[tumblr]" type="checkbox" value="1" <?php if (isset($options['tumblr'])) { checked('1', $options['tumblr']); } ?> /> Tumblr</label><br/>
-				<label><input name="cxnh_quickshare_options[reddit]" type="checkbox" value="1" <?php if (isset($options['reddit'])) { checked('1', $options['reddit']); } ?> /> Reddit</label><br class="n-genericons-option"/>
-				<label><input name="cxnh_quickshare_options[stumbleupon]" type="checkbox" value="1" <?php if (isset($options['stumbleupon'])) { checked('1', $options['stumbleupon']); } ?> /> Stumbleupon</label><br class="n-genericons-option"/>
+				<label><input name="cxnh_quickshare_options[reddit]" type="checkbox" value="1" <?php if (isset($options['reddit'])) { checked('1', $options['reddit']); } ?> /> Reddit</label><br/>
+				<label><input name="cxnh_quickshare_options[stumbleupon]" type="checkbox" value="1" <?php if (isset($options['stumbleupon'])) { checked('1', $options['stumbleupon']); } ?> /> Stumbleupon</label><br/>
 				<label><input name="cxnh_quickshare_options[email]" type="checkbox" value="1" <?php if (isset($options['email'])) { checked('1', $options['email']); } ?> /> Email</label><br/>
 			</td>
 		</tr>
