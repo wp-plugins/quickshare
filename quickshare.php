@@ -526,7 +526,8 @@ function cxnh_quickshare_show_output() {
 
 	unset( $quickshare_in_excerpt );
 
-	return $output;
+	/** Filter whether to display QuickShare on the current post object. Overrides all built-in settings/options. */
+	return apply_filters( 'quickshare_show_output', $output );
 }
 
 // All of the functions that display the QuickShare output.
