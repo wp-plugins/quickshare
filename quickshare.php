@@ -74,6 +74,7 @@ function cxnh_quickshare_add_defaults() {
 			'pages' => 0,
 			'attachments' => 1,
 			'everything' => 0,
+			'only_single' => 0,
 			'excluded_ids' => '',
 			
 			'facebook' => 1,
@@ -280,7 +281,8 @@ function cxnh_quickshare_render_form() {
 				<label><input name="cxnh_quickshare_options[everywhere]" id="displayeverywhere" type="checkbox" value="1" <?php if ( isset( $options['everywhere'] ) ) { checked( '1', $options['everywhere'] ); } ?> /> Everywhere the_content() is used (including custom post types)</label><br class="display-option"/>
 				<label class="display-option"><input name="cxnh_quickshare_options[posts]" type="checkbox" value="1" <?php if ( isset( $options['posts'] ) ) { checked('1', $options['posts'] ); } ?> /> Posts</label><br class="display-option"/>
 				<label class="display-option"><input name="cxnh_quickshare_options[pages]" type="checkbox" value="1" <?php if ( isset( $options['pages'] ) ) { checked('1', $options['pages'] ); } ?> /> Pages</label><br class="display-option"/>
-				<label class="display-option"><input name="cxnh_quickshare_options[attachments]" type="checkbox" value="1" <?php if ( isset( $options['attachments'] ) ) { checked( '1', $options['attachments'] ); } ?> /> Media Attachments <span style="font-style: italics;">(may not display in some themes if the description field is empty)</span></label>
+				<label class="display-option"><input name="cxnh_quickshare_options[attachments]" type="checkbox" value="1" <?php if ( isset( $options['attachments'] ) ) { checked( '1', $options['attachments'] ); } ?> /> Media Attachments <span style="font-style: italic;">(may not display in some themes if the description field is empty)</span></label>
+				<p><label><input name="cxnh_quickshare_options[single_only]" type="checkbox" value="1" <?php if ( isset( $options['single_only'] ) ) { checked( '1', $options['single_only'] ); } ?> /> Display only on single-view pages</label></p>
 				<p>Use the <code>[quickshare]</code> shortcode to display QuickShare in custom places; for example, on only one specific page.</p>
 				<p>If you want to display the QuickShare links anywhere else, use <code>&lt;?php do_quickshare_output( $url, $title, $source, $description, $imgurl ); ?&gt;</code> in your templates.</p>
 				<h5>Excluded Posts/Pages:</h5>
@@ -493,6 +495,9 @@ function cxnh_quickshare_show_output() {
 	$output = false;
 
 	if ( is_feed() ) {
+		$output = false;
+	}
+	elseif ( cxnh_quickshare_getOption( 'single_only', $options ) && ! is_singular() ) {
 		$output = false;
 	}
 	elseif ( $quickshare_in_excerpt ) {
