@@ -71,7 +71,8 @@ Contents:
 	transition: .2s all cubic-bezier(0.636,0.197,0.0202,0.352);
 	cursor: pointer;
 }
-.quickshare-icons span:hover {
+.quickshare-icons span:hover,
+.quickshare-icons a:focus span {
 	opacity: 1;
 }
 
@@ -107,7 +108,8 @@ Contents:
 	transition: .2s all cubic-bezier(0.636,0.197,0.0202,0.352);
 }
 .quickshare-genericons.monochrome span,
-.quickshare-genericons span:hover {
+.quickshare-genericons span:hover,
+.quickshare-genericons a:focus span {
 	opacity: 1;
 }
 .quickshare-genericons.monochrome span:before {
@@ -136,7 +138,8 @@ Contents:
 	cursor: pointer;
 	position: relative;
 }
-.quickshare-text span:hover {
+.quickshare-text span:hover,
+.quickshare-text a:focus span {
 	box-shadow: 1px 1px 1px rgba(0,0,0,.4);
 	background-color: rgba(77,77,77,.18);
 }
@@ -211,7 +214,8 @@ Contents:
 	font-size: 1.2em;
 	color: #880015;
 }
-.monochrome-color span.quickshare-email:hover:before {
+.monochrome-color span.quickshare-email:hover:before,
+.monochrome-color a:focus span.quickshare-email:before {
 	color: #880015;
 }
 .quickshare-facebook {
@@ -221,7 +225,8 @@ Contents:
 	content: '\f203';
 	color: #3f5094;
 }
-.monochrome-color span.quickshare-facebook:hover:before {
+.monochrome-color span.quickshare-facebook:hover:before,
+.monochrome-color a:focus span.quickshare-facebook:before {
 	color: #3f5094;
 }
 .quickshare-twitter {
@@ -231,7 +236,8 @@ Contents:
 	content: '\f202';
 	color: #00adff;
 }
-.monochrome-color span.quickshare-twitter:hover:before {
+.monochrome-color span.quickshare-twitter:hover:before,
+.monochrome-color a:focus span.quickshare-twitter:before {
 	color: #00adff;
 }
 .quickshare-linkedin {
@@ -241,7 +247,7 @@ Contents:
 	content: '\f208';
 	color: #0080b1;
 }
-.monochrome-color span.quickshare-linkedin:hover:before {
+.monochrome-color a:focus span.quickshare-linkedin:before {
 	color: #0080b1;
 }
 .quickshare-pinterest {
@@ -251,7 +257,8 @@ Contents:
 	content: '\f210';
 	color: #c92a2a;
 }
-.monochrome-color span.quickshare-pinterest:hover:before {
+.monochrome-color span.quickshare-pinterest:hover:before,
+.monochrome-color a:focus span.quickshare-pinterest:before {
 	color: #c92a2a;
 }
 .quickshare-googleplus {
@@ -261,7 +268,8 @@ Contents:
 	content: '\f206';
 	color: #c23727;
 }
-.monochrome-color span.quickshare-googleplus:hover:before {
+.monochrome-color span.quickshare-googleplus:hover:before,
+.monochrome-color a:focus span.quickshare-googleplus:before {
 	color: #c23727;
 }
 .quickshare-reddit {
@@ -271,6 +279,10 @@ Contents:
 	content: '\f222';
 	color: #222;
 }
+.monochrome-color span.quickshare-reddit:hover:before,
+.monochrome-color a:focus span.quickshare-reddit:before {
+	color: #222;
+}
 .quickshare-tumblr {
 	background-image: url('icons/tumblr.png');
 }
@@ -278,7 +290,8 @@ Contents:
 	content: '\f214';
 	color: #3d5777;
 }
-.monochrome-color span.quickshare-tumblr:hover:before {
+.monochrome-color span.quickshare-tumblr:hover:before,
+.monochrome-color a:focus span.quickshare-tumblr:before {
 	color: #3d5777;
 }
 .quickshare-stumbleupon {
@@ -286,6 +299,10 @@ Contents:
 }
 .quickshare-stumbleupon:before {
 	content: '\f223';
+	color: #cf4c33;
+}
+.monochrome-color span.quickshare-stumbleupon:hover:before,
+.monochrome-color a:focus span.quickshare-stumbleupon:before {
 	color: #cf4c33;
 }
 
@@ -317,50 +334,60 @@ li.quickshare-share {
 	-moz-transform: none !important;
 	transform: none !important;
 }
-.quickshare-effect-spin span:hover {
+.quickshare-effect-spin span:hover,
+.quickshare-effect-spin a:hover span {
 	-webkit-transform: rotate(360deg);
 	-moz-transform: rotate(360deg);
 	transform: rotate(360deg);
 }
-.quickshare-text.quickshare-effect-spin span:hover {
+.quickshare-text.quickshare-effect-spin span:hover,
+.quickshare-text.quickshare-effect-spin a:hover span {
 	/* Skew instead of spinning */	
 	-webkit-transform: skew(-10deg,-2deg);
 	-moz-transform: skew(-10deg,-2deg);
 	transform: skew(-10deg,-2deg);
 }
-.quickshare-effect-round span:hover {
+.quickshare-effect-round span:hover,
+.quickshare-effect-round a:hover span {
 	border-radius: 32px;
 }
-.quickshare-effect-glow span:hover {
-	box-shadow: 0 0 20px #777;
+.quickshare-effect-glow span:hover,
+.quickshare-effect-glow a:hover span {
+	box-shadow: 0 0 18px rgba(140,140,140,.5);
 }
-.quickshare-effect-contract span:hover {
+.quickshare-effect-contract span:hover,
+.quickshare-effect-contract a:hover span {
 	-webkit-transform: scale(.86);
 	-moz-transform: scale(.86);
 	transform: scale(.86);
 }
-.quickshare-effect-expand span:hover {
+.quickshare-effect-expand span:hover,
+.quickshare-effect-expand a:hover span {
 	-webkit-transform: scale(1.12);
 	-moz-transform: scale(1.12);
 	transform: scale(1.12);
 }
 /* compounded transform effects */
-.quickshare-effect-spin.quickshare-effect-contract span:hover {
+.quickshare-effect-spin.quickshare-effect-contract span:hover,
+.quickshare-effect-spin.quickshare-effect-contract a:hover span {
 	-webkit-transform: rotate(360deg) scale(.86);
 	-moz-transform: rotate(360deg) scale(.86);
 	transform: rotate(360deg) scale(.86);
 }
-.quickshare-effect-spin.quickshare-effect-expand span:hover {
+.quickshare-effect-spin.quickshare-effect-expand span:hover,
+.quickshare-effect-spin.quickshare-effect-expand a:hover span {
 	-webkit-transform: rotate(360deg) scale(1.12);
 	-moz-transform: rotate(360deg) scale(1.12);
 	transform: rotate(360deg) scale(1.12);
 }
-.quickshare-text.quickshare-effect-spin.quickshare-effect-contract span:hover {
+.quickshare-text.quickshare-effect-spin.quickshare-effect-contract span:hover,
+.quickshare-text.quickshare-effect-spin.quickshare-effect-contract a:hover span {
 	-webkit-transform: skew(-10deg,-2deg) scale(.86);
 	-moz-transform: skew(-10deg,-2deg) scale(.86);
 	transform: skew(-10deg,-2deg) scale(.86);
 }
-.quickshare-text.quickshare-effect-spin.quickshare-effect-expand span:hover {
+.quickshare-text.quickshare-effect-spin.quickshare-effect-expand span:hover,
+.quickshare-text.quickshare-effect-spin.quickshare-effect-expand a:hover span {
 	-webkit-transform: skew(-10deg,-2deg) scale(1.12);
 	-moz-transform: skew(-10deg,-2deg) scale(1.12);
 	transform: skew(-10deg,-2deg) scale(1.12);

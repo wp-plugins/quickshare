@@ -221,6 +221,7 @@ function cxnh_quickshare_admin_head() {
 			echo '.quickshare-text span:before,';
 		} ?>
 		.quickshare-text span:hover,
+		.quickshare-text a:focus span,
 		.quickshare-genericons.monochrome span:before,
 		.quickshare-genericons.monochrome-color span:before {
 			<?php if( ! cxnh_quickshare_getOption( 'inherit_color', $options ) ) {
@@ -231,10 +232,13 @@ function cxnh_quickshare_admin_head() {
 			} ?>
 		}
 		.quickshare-text span:hover,
+		.quickshare-text a:focus span,
 		<?php if( cxnh_quickshare_getOption( 'text_icons_color', $options ) ) {
 			echo '.quickshare-text span:hover:before,';
+			echo '.quickshare-text a:focus span:before,';
 		} ?>
-		.quickshare-genericons.monochrome span:hover:before {
+		.quickshare-genericons.monochrome span:hover:before,
+		.quickshare-genericons.monochrome a:focus span:before {
 			<?php if( ! cxnh_quickshare_getOption( 'inherit_color', $options ) ) {
 				echo 'color: ' . cxnh_quickshare_getOption( 'hovercolor', $options ) .';';
 			} ?>
@@ -565,6 +569,7 @@ function cxnh_quickshare_head() {
 		.quickshare-text span,
 		<?php if( cxnh_quickshare_getOption( 'text_icons_color', $options ) ) { echo '.quickshare-text span:before,'; } ?>
 		.quickshare-text span:hover,
+		.quickshare-text a:focus span,
 		.quickshare-genericons.monochrome span:before,
 		.quickshare-genericons.monochrome-color span:before {
 			<?php if( ! cxnh_quickshare_getOption( 'inherit_color', $options ) ) {
@@ -577,8 +582,10 @@ function cxnh_quickshare_head() {
 		}
 
 		.quickshare-text span:hover,
-		<?php if( cxnh_quickshare_getOption( 'text_icons_color', $options ) ) { echo '.quickshare-text span:hover:before,'; } ?>
-		.quickshare-genericons.monochrome span:hover:before {
+		.quickshare-text a:focus span,
+		<?php if( cxnh_quickshare_getOption( 'text_icons_color', $options ) ) { echo '.quickshare-text span:hover:before, .quickshare-text a:focus span:before,'; } ?>
+		.quickshare-genericons.monochrome span:hover:before,
+		.quickshare-genericons.monochrome a:focus span:before {
 			<?php if( ! cxnh_quickshare_getOption( 'inherit_color', $options ) ) {
 				echo 'color: ' . cxnh_quickshare_getOption( 'hovercolor', $options ) .';';
 			} ?>
