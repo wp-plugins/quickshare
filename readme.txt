@@ -2,7 +2,7 @@
 Contributors: celloexpressions
 Tags: Social, Share, Sharing, Social Sharing, Social Media, Quick, Easy, Lightweight, No JS, Flexible, Customizable, Responsive, Facebook, Twitter, Pinterest, Linkedin, Google+, Tumblr, Email, Reddit, StumbleUpon
 Requires at least: 3.5
-Tested up to: 3.8
+Tested up to: 3.9
 Stable tag: 1.5
 Description: Add quick social sharing functions to your content. Challenge social sharing norms with a flexible design and fast performance.
 License: GPLv2
