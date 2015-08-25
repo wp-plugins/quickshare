@@ -2,7 +2,7 @@
 Contributors: celloexpressions
 Tags: Social, Share, Sharing, Social Sharing, Social Media, Quick, Easy, Lightweight, No JS, Flexible, Customizable, Responsive, Facebook, Twitter, Pinterest, Linkedin, Google+, Tumblr, Email, Reddit, StumbleUpon
 Requires at least: 3.5
-Tested up to: 4.1
+Tested up to: 4.3
 Stable tag: 1.5
 Description: Add quick social sharing functions to your content. Challenge social sharing norms with a flexible design and fast performance.
 License: GPLv2
@@ -19,8 +19,6 @@ The share bar appearance is highly customizable and share functions can be displ
 QuickShare can be displayed at the end of ever post, page, and/or attachment, or all post types automatically. Or, you can use the `[quickshare]` shortcode to display QuickShare wherever you'd like in any of your posts/pages. You can also exclude posts by id, or even use a custom output function in your templates, including the ability to override the default generated sharing data.
 
 As a bonus, QuickShare includes several built-in CSS3 effects for hover state animations.
-
-**Please visit the plugin support forum for help with custom css snippets and/or feature requests!**
 
 *Please note that QuickShare does not and will not support link tracking, because of its goal of being simple and lightweight. You can use a 3rd-party tool like Google Analytics to track shares as external links.*
 
